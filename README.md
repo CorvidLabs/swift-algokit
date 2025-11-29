@@ -30,7 +30,12 @@ dependencies: [
 ]
 
 // Add the dependency to your target:
-.target(name: "MyApp", dependencies: ["AlgoKit"])
+.target(
+    name: "YourApp",
+    dependencies: [
+        .product(name: "AlgoKit", package: "swift-algokit")
+    ]
+)
 ```
 
 Or add it via Xcode:
