@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "AlgoKit",
+    name: "swift-algokit",
     platforms: [
         .iOS(.v15),
         .watchOS(.v8),
