@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "AlgoKit",
+    name: "swift-algokit",
     platforms: [
         .iOS(.v15),
         .watchOS(.v8),
@@ -19,7 +19,7 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/CorvidLabs/swift-algorand.git", from: "0.1.0"),
+        .package(url: "https://github.com/CorvidLabs/swift-algorand.git", from: "0.2.0"),
         .package(url: "https://github.com/swiftlang/swift-docc-plugin", from: "1.4.0")
     ],
     targets: [

@@ -28,6 +28,14 @@ Add AlgoKit to your `Package.swift`:
 dependencies: [
     .package(url: "https://github.com/CorvidLabs/swift-algokit.git", from: "0.1.0")
 ]
+
+// Add the dependency to your target:
+.target(
+    name: "YourApp",
+    dependencies: [
+        .product(name: "AlgoKit", package: "swift-algokit")
+    ]
+)
 ```
 
 Or add it via Xcode:
