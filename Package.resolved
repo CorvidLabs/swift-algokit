@@ -1,13 +1,13 @@
 {
-  "originHash" : "b1c8f0e00a99448b63a56b2d64e93356ac8e3ad2e8d0b7cfca332190d2d17f59",
+  "originHash" : "4600a0cd902a1ebd87560c7ee7507a0cdc1bad2328d45be18f7331cb49dfa062",
   "pins" : [
     {
       "identity" : "swift-algorand",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/CorvidLabs/swift-algorand.git",
       "state" : {
-        "revision" : "aaecc39d0f462a1a2468785cf0d1a8a3e62815e2",
-        "version" : "0.1.0"
+        "revision" : "77375c5c741fe907cfdcf17ca893a8c5b2bf8a79",
+        "version" : "0.2.0"
       }
     },
     {
