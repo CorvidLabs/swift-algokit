@@ -6,10 +6,10 @@ import PackageDescription
 let package = Package(
     name: "swift-algokit",
     platforms: [
-        .iOS(.v15),
-        .watchOS(.v8),
-        .macOS(.v11),
-        .tvOS(.v15),
+        .iOS(.v16),
+        .macOS(.v13),
+        .tvOS(.v16),
+        .watchOS(.v9),
         .visionOS(.v1)
     ],
     products: [
@@ -20,18 +20,24 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/CorvidLabs/swift-algorand.git", from: "0.2.0"),
-        .package(url: "https://github.com/swiftlang/swift-docc-plugin", from: "1.4.0")
+        .package(url: "https://github.com/swiftlang/swift-docc-plugin", from: "1.4.3")
     ],
     targets: [
         .target(
             name: "AlgoKit",
             dependencies: [
                 .product(name: "Algorand", package: "swift-algorand")
+            ],
+            swiftSettings: [
+                .enableUpcomingFeature("StrictConcurrency")
             ]
         ),
         .testTarget(
             name: "AlgoKitTests",
-            dependencies: ["AlgoKit"]
+            dependencies: ["AlgoKit"],
+            swiftSettings: [
+                .enableUpcomingFeature("StrictConcurrency")
+            ]
         )
     ]
 )
