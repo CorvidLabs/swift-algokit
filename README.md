@@ -1,6 +1,7 @@
 # swift-algokit
 
-[![CI](https://img.shields.io/github/actions/workflow/status/CorvidLabs/swift-algokit/ci.yml?label=CI&branch=main)](https://github.com/CorvidLabs/swift-algokit/actions/workflows/ci.yml)
+[![macOS](https://img.shields.io/github/actions/workflow/status/CorvidLabs/swift-algokit/macOS.yml?label=macOS&branch=main)](https://github.com/CorvidLabs/swift-algokit/actions/workflows/macOS.yml)
+[![Ubuntu](https://img.shields.io/github/actions/workflow/status/CorvidLabs/swift-algokit/ubuntu.yml?label=Ubuntu&branch=main)](https://github.com/CorvidLabs/swift-algokit/actions/workflows/ubuntu.yml)
 [![License](https://img.shields.io/github/license/CorvidLabs/swift-algokit)](https://github.com/CorvidLabs/swift-algokit/blob/main/LICENSE)
 [![Version](https://img.shields.io/github/v/release/CorvidLabs/swift-algokit)](https://github.com/CorvidLabs/swift-algokit/releases)
 
