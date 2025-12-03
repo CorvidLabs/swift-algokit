@@ -24,21 +24,25 @@ public actor AtomicTransactionComposer {
 
     // MARK: - Initialization
 
-    /// Creates a new atomic transaction composer.
-    /// - Parameter algokit: The AlgoKit client to use for fetching transaction parameters
+    /**
+     Creates a new atomic transaction composer.
+     - Parameter algokit: The AlgoKit client to use for fetching transaction parameters
+     */
     public init(algokit: AlgoKit) {
         self.algokit = algokit
     }
 
     // MARK: - Builder Methods
 
-    /// Adds a payment transaction to the group.
-    /// - Parameters:
-    ///   - sender: The sender address
-    ///   - receiver: The receiver address
-    ///   - amount: The amount to send
-    ///   - note: Optional note to include
-    /// - Returns: Self for method chaining
+    /**
+     Adds a payment transaction to the group.
+     - Parameters:
+       - sender: The sender address
+       - receiver: The receiver address
+       - amount: The amount to send
+       - note: Optional note to include
+     - Returns: Self for method chaining
+     */
     @discardableResult
     public func pay(
         from sender: Address,
@@ -63,13 +67,15 @@ public actor AtomicTransactionComposer {
         return self
     }
 
-    /// Adds an asset transfer transaction to the group.
-    /// - Parameters:
-    ///   - assetID: The asset ID to transfer
-    ///   - sender: The sender address
-    ///   - receiver: The receiver address
-    ///   - amount: The amount in base units
-    /// - Returns: Self for method chaining
+    /**
+     Adds an asset transfer transaction to the group.
+     - Parameters:
+       - assetID: The asset ID to transfer
+       - sender: The sender address
+       - receiver: The receiver address
+       - amount: The amount in base units
+     - Returns: Self for method chaining
+     */
     @discardableResult
     public func transferAsset(
         _ assetID: UInt64,
@@ -94,11 +100,13 @@ public actor AtomicTransactionComposer {
         return self
     }
 
-    /// Adds an asset opt-in transaction to the group.
-    /// - Parameters:
-    ///   - assetID: The asset ID to opt into
-    ///   - account: The account address opting in
-    /// - Returns: Self for method chaining
+    /**
+     Adds an asset opt-in transaction to the group.
+     - Parameters:
+       - assetID: The asset ID to opt into
+       - account: The account address opting in
+     - Returns: Self for method chaining
+     */
     @discardableResult
     public func optInToAsset(
         _ assetID: UInt64,
@@ -119,12 +127,14 @@ public actor AtomicTransactionComposer {
         return self
     }
 
-    /// Adds an application call transaction to the group.
-    /// - Parameters:
-    ///   - appID: The application ID to call
-    ///   - sender: The sender address
-    ///   - arguments: Optional application arguments
-    /// - Returns: Self for method chaining
+    /**
+     Adds an application call transaction to the group.
+     - Parameters:
+       - appID: The application ID to call
+       - sender: The sender address
+       - arguments: Optional application arguments
+     - Returns: Self for method chaining
+     */
     @discardableResult
     public func callApplication(
         _ appID: UInt64,
@@ -147,17 +157,21 @@ public actor AtomicTransactionComposer {
         return self
     }
 
-    /// Adds a custom transaction to the group.
-    /// - Parameter transaction: The transaction to add
-    /// - Returns: Self for method chaining
+    /**
+     Adds a custom transaction to the group.
+     - Parameter transaction: The transaction to add
+     - Returns: Self for method chaining
+     */
     @discardableResult
     public func add(_ transaction: any Transaction) -> Self {
         transactions.append(transaction)
         return self
     }
 
-    /// Builds and returns the result for signing.
-    /// - Returns: The atomic transaction result ready for signing
+    /**
+     Builds and returns the result for signing.
+     - Returns: The atomic transaction result ready for signing
+     */
     public func build() throws -> AtomicTransactionResult {
         let group = try AtomicTransactionGroup(transactions: transactions)
         return AtomicTransactionResult(group: group, algokit: algokit)
@@ -176,10 +190,12 @@ public struct AtomicTransactionResult: Sendable {
 
     // MARK: - Initialization
 
-    /// Creates a new atomic transaction result.
-    /// - Parameters:
-    ///   - group: The transaction group
-    ///   - algokit: The AlgoKit client
+    /**
+     Creates a new atomic transaction result.
+     - Parameters:
+       - group: The transaction group
+       - algokit: The AlgoKit client
+     */
     init(group: AtomicTransactionGroup, algokit: AlgoKit) {
         self.group = group
         self.algokit = algokit
@@ -187,9 +203,11 @@ public struct AtomicTransactionResult: Sendable {
 
     // MARK: - Public Methods
 
-    /// Signs the transaction group with the provided accounts.
-    /// - Parameter signers: The accounts to sign with (must match transaction order)
-    /// - Returns: The signed atomic transaction result
+    /**
+     Signs the transaction group with the provided accounts.
+     - Parameter signers: The accounts to sign with (must match transaction order)
+     - Returns: The signed atomic transaction result
+     */
     public func signedBy(_ signers: [Account]) async throws -> SignedAtomicTransactionResult {
         guard signers.count == group.transactions.count else {
             throw AlgorandError.invalidTransaction("Number of signers must match number of transactions")
@@ -204,9 +222,11 @@ public struct AtomicTransactionResult: Sendable {
         return SignedAtomicTransactionResult(signedGroup: signed, algokit: algokit)
     }
 
-    /// Signs the transaction group with a mapping of indices to accounts.
-    /// - Parameter signers: The accounts indexed by transaction position
-    /// - Returns: The signed atomic transaction result
+    /**
+     Signs the transaction group with a mapping of indices to accounts.
+     - Parameter signers: The accounts indexed by transaction position
+     - Returns: The signed atomic transaction result
+     */
     public func signedBy(_ signers: [Int: Account]) async throws -> SignedAtomicTransactionResult {
         let signed = try SignedAtomicTransactionGroup.sign(group, with: signers)
         return SignedAtomicTransactionResult(signedGroup: signed, algokit: algokit)
@@ -225,10 +245,12 @@ public struct SignedAtomicTransactionResult: Sendable {
 
     // MARK: - Initialization
 
-    /// Creates a new signed atomic transaction result.
-    /// - Parameters:
-    ///   - signedGroup: The signed transaction group
-    ///   - algokit: The AlgoKit client
+    /**
+     Creates a new signed atomic transaction result.
+     - Parameters:
+       - signedGroup: The signed transaction group
+       - algokit: The AlgoKit client
+     */
     init(signedGroup: SignedAtomicTransactionGroup, algokit: AlgoKit) {
         self.signedGroup = signedGroup
         self.algokit = algokit
@@ -236,15 +258,19 @@ public struct SignedAtomicTransactionResult: Sendable {
 
     // MARK: - Public Methods
 
-    /// Submits the transaction group to the network.
-    /// - Returns: The transaction ID
+    /**
+     Submits the transaction group to the network.
+     - Returns: The transaction ID
+     */
     public func submit() async throws -> String {
         try await algokit.algodClient.sendTransactionGroup(signedGroup)
     }
 
-    /// Submits the transaction group and waits for confirmation.
-    /// - Parameter timeout: Maximum rounds to wait (default: 10)
-    /// - Returns: The confirmed transaction
+    /**
+     Submits the transaction group and waits for confirmation.
+     - Parameter timeout: Maximum rounds to wait (default: 10)
+     - Returns: The confirmed transaction
+     */
     public func submitAndWait(timeout: UInt64 = 10) async throws -> PendingTransaction {
         let txid = try await submit()
         return try await algokit.waitForConfirmation(txid, timeout: timeout)

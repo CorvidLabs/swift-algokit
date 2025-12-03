@@ -165,8 +165,10 @@ public actor AlgoKit {
 
     // MARK: - Initialization
 
-    /// Creates a new AlgoKit client with the specified configuration.
-    /// - Parameter configuration: The configuration to use
+    /**
+     Creates a new AlgoKit client with the specified configuration.
+     - Parameter configuration: The configuration to use
+     */
     public init(configuration: AlgorandConfiguration) {
         self.configuration = configuration
         self.algodClient = AlgodClient(baseURL: configuration.algodURL, apiToken: configuration.apiToken)
@@ -178,8 +180,10 @@ public actor AlgoKit {
         }
     }
 
-    /// Creates a new AlgoKit client for the specified network.
-    /// - Parameter network: The network to connect to
+    /**
+     Creates a new AlgoKit client for the specified network.
+     - Parameter network: The network to connect to
+     */
     public init(network: AlgorandConfiguration.Network) {
         self.init(configuration: AlgorandConfiguration(network: network))
     }

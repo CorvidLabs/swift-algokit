@@ -3,13 +3,15 @@ import Algorand
 // MARK: - Payment Operations
 
 public extension AlgoKit {
-    /// Sends Algos from one account to another.
-    /// - Parameters:
-    ///   - sender: The account to send from
-    ///   - receiver: The address to send to
-    ///   - amount: The amount to send
-    ///   - note: Optional note to include
-    /// - Returns: The transaction ID
+    /**
+     Sends Algos from one account to another.
+     - Parameters:
+       - sender: The account to send from
+       - receiver: The address to send to
+       - amount: The amount to send
+       - note: Optional note to include
+     - Returns: The transaction ID
+     */
     func send(
         from sender: Account,
         to receiver: Address,
@@ -33,14 +35,16 @@ public extension AlgoKit {
         return try await algodClient.sendTransaction(signedTx)
     }
 
-    /// Sends Algos and waits for confirmation.
-    /// - Parameters:
-    ///   - sender: The account to send from
-    ///   - receiver: The address to send to
-    ///   - amount: The amount to send
-    ///   - note: Optional note to include
-    ///   - timeout: Maximum rounds to wait for confirmation (default: 10)
-    /// - Returns: The confirmed transaction result
+    /**
+     Sends Algos and waits for confirmation.
+     - Parameters:
+       - sender: The account to send from
+       - receiver: The address to send to
+       - amount: The amount to send
+       - note: Optional note to include
+       - timeout: Maximum rounds to wait for confirmation (default: 10)
+     - Returns: The confirmed transaction result
+     */
     func sendAndWait(
         from sender: Account,
         to receiver: Address,

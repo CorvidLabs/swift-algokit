@@ -4,16 +4,18 @@ import Foundation
 // MARK: - Application Operations
 
 public extension AlgoKit {
-    /// Creates a new application.
-    /// - Parameters:
-    ///   - creator: The account creating the application
-    ///   - approvalProgram: The approval program bytecode
-    ///   - clearStateProgram: The clear state program bytecode
-    ///   - globalStateSchema: Schema for global state
-    ///   - localStateSchema: Schema for local state
-    ///   - appArguments: Optional application arguments
-    ///   - extraPages: Optional extra program pages
-    /// - Returns: The created application ID
+    /**
+     Creates a new application.
+     - Parameters:
+       - creator: The account creating the application
+       - approvalProgram: The approval program bytecode
+       - clearStateProgram: The clear state program bytecode
+       - globalStateSchema: Schema for global state
+       - localStateSchema: Schema for local state
+       - appArguments: Optional application arguments
+       - extraPages: Optional extra program pages
+     - Returns: The created application ID
+     */
     func createApplication(
         from creator: Account,
         approvalProgram: Data,
@@ -50,16 +52,18 @@ public extension AlgoKit {
         return appIndex
     }
 
-    /// Calls an application with NoOp.
-    /// - Parameters:
-    ///   - appID: The application ID
-    ///   - caller: The account calling the application
-    ///   - arguments: Optional application arguments
-    ///   - accounts: Optional accounts to pass
-    ///   - foreignApps: Optional foreign apps
-    ///   - foreignAssets: Optional foreign assets
-    ///   - boxes: Optional boxes
-    /// - Returns: The transaction ID
+    /**
+     Calls an application with NoOp.
+     - Parameters:
+       - appID: The application ID
+       - caller: The account calling the application
+       - arguments: Optional application arguments
+       - accounts: Optional accounts to pass
+       - foreignApps: Optional foreign apps
+       - foreignAssets: Optional foreign assets
+       - boxes: Optional boxes
+     - Returns: The transaction ID
+     */
     func callApplication(
         _ appID: UInt64,
         from caller: Account,
@@ -89,12 +93,14 @@ public extension AlgoKit {
         return try await algodClient.sendTransaction(signedTx)
     }
 
-    /// Opts into an application.
-    /// - Parameters:
-    ///   - appID: The application ID
-    ///   - account: The account opting in
-    ///   - arguments: Optional application arguments
-    /// - Returns: The transaction ID
+    /**
+     Opts into an application.
+     - Parameters:
+       - appID: The application ID
+       - account: The account opting in
+       - arguments: Optional application arguments
+     - Returns: The transaction ID
+     */
     func optInToApplication(
         _ appID: UInt64,
         from account: Account,
@@ -116,12 +122,14 @@ public extension AlgoKit {
         return try await algodClient.sendTransaction(signedTx)
     }
 
-    /// Closes out from an application.
-    /// - Parameters:
-    ///   - appID: The application ID
-    ///   - account: The account closing out
-    ///   - arguments: Optional application arguments
-    /// - Returns: The transaction ID
+    /**
+     Closes out from an application.
+     - Parameters:
+       - appID: The application ID
+       - account: The account closing out
+       - arguments: Optional application arguments
+     - Returns: The transaction ID
+     */
     func closeOutApplication(
         _ appID: UInt64,
         from account: Account,
@@ -143,14 +151,16 @@ public extension AlgoKit {
         return try await algodClient.sendTransaction(signedTx)
     }
 
-    /// Updates an application.
-    /// - Parameters:
-    ///   - appID: The application ID
-    ///   - account: The creator account
-    ///   - approvalProgram: New approval program bytecode
-    ///   - clearStateProgram: New clear state program bytecode
-    ///   - arguments: Optional application arguments
-    /// - Returns: The transaction ID
+    /**
+     Updates an application.
+     - Parameters:
+       - appID: The application ID
+       - account: The creator account
+       - approvalProgram: New approval program bytecode
+       - clearStateProgram: New clear state program bytecode
+       - arguments: Optional application arguments
+     - Returns: The transaction ID
+     */
     func updateApplication(
         _ appID: UInt64,
         from account: Account,
@@ -176,12 +186,14 @@ public extension AlgoKit {
         return try await algodClient.sendTransaction(signedTx)
     }
 
-    /// Deletes an application.
-    /// - Parameters:
-    ///   - appID: The application ID
-    ///   - account: The creator account
-    ///   - arguments: Optional application arguments
-    /// - Returns: The transaction ID
+    /**
+     Deletes an application.
+     - Parameters:
+       - appID: The application ID
+       - account: The creator account
+       - arguments: Optional application arguments
+     - Returns: The transaction ID
+     */
     func deleteApplication(
         _ appID: UInt64,
         from account: Account,

@@ -4,16 +4,18 @@ import Foundation
 // MARK: - Key Registration Operations
 
 public extension AlgoKit {
-    /// Registers an account online for consensus participation.
-    /// - Parameters:
-    ///   - account: The account to register online
-    ///   - voteKey: The vote public key (32 bytes)
-    ///   - selectionKey: The selection public key (32 bytes)
-    ///   - stateProofKey: The state proof key (64 bytes, optional)
-    ///   - voteFirst: First round for participation
-    ///   - voteLast: Last round for participation
-    ///   - voteKeyDilution: Key dilution parameter
-    /// - Returns: The transaction ID
+    /**
+     Registers an account online for consensus participation.
+     - Parameters:
+       - account: The account to register online
+       - voteKey: The vote public key (32 bytes)
+       - selectionKey: The selection public key (32 bytes)
+       - stateProofKey: The state proof key (64 bytes, optional)
+       - voteFirst: First round for participation
+       - voteLast: Last round for participation
+       - voteKeyDilution: Key dilution parameter
+     - Returns: The transaction ID
+     */
     func goOnline(
         _ account: Account,
         voteKey: Data,
@@ -43,9 +45,11 @@ public extension AlgoKit {
         return try await algodClient.sendTransaction(signedTx)
     }
 
-    /// Takes an account offline (stops consensus participation).
-    /// - Parameter account: The account to take offline
-    /// - Returns: The transaction ID
+    /**
+     Takes an account offline (stops consensus participation).
+     - Parameter account: The account to take offline
+     - Returns: The transaction ID
+     */
     func goOffline(_ account: Account) async throws -> String {
         let params = try await algodClient.transactionParams()
 
