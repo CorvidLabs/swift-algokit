@@ -1,8 +1,8 @@
 # swift-algokit
 
-![Swift 6.0+](https://img.shields.io/badge/Swift-6.0+-orange.svg)
-![Platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20watchOS%20%7C%20visionOS%20%7C%20Linux-lightgrey.svg)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+[![CI](https://img.shields.io/github/actions/workflow/status/CorvidLabs/swift-algokit/ci.yml?label=CI&branch=main)](https://github.com/CorvidLabs/swift-algokit/actions/workflows/ci.yml)
+[![License](https://img.shields.io/github/license/CorvidLabs/swift-algokit)](https://github.com/CorvidLabs/swift-algokit/blob/main/LICENSE)
+[![Version](https://img.shields.io/github/v/release/CorvidLabs/swift-algokit)](https://github.com/CorvidLabs/swift-algokit/releases)
 
 > **Pre-1.0 Notice**: This SDK is under active development. The API may change between minor versions until 1.0. Not yet audited by a third-party security firm.
 
