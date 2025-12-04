@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/github/license/CorvidLabs/swift-algokit)](https://github.com/CorvidLabs/swift-algokit/blob/main/LICENSE)
 [![Version](https://img.shields.io/github/v/release/CorvidLabs/swift-algokit)](https://github.com/CorvidLabs/swift-algokit/releases)
 
-> **Pre-1.0 Notice**: This SDK is under active development. The API may change between minor versions until 1.0. Not yet audited by a third-party security firm.
+> **Pre-1.0 Notice**: This SDK is under active development. The API may change between minor versions until 1.0.
 
 A high-level Swift client for the Algorand blockchain. Built on [swift-algorand](https://github.com/CorvidLabs/swift-algorand) with Swift 6 and async/await.
 
