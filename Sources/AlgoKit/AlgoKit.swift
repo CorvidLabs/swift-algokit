@@ -185,6 +185,17 @@ public actor AlgoKit {
      - Parameter network: The network to connect to
      */
     public init(network: AlgorandConfiguration.Network) {
-        self.init(configuration: AlgorandConfiguration(network: network))
+        let configuration: AlgorandConfiguration
+        switch network {
+        case .localnet:
+            configuration = .localnet()
+        case .testnet:
+            configuration = .testnet()
+        case .mainnet:
+            configuration = .mainnet()
+        case .custom(let algodURL, let indexerURL):
+            configuration = .custom(algodURL: algodURL, indexerURL: indexerURL)
+        }
+        self.init(configuration: configuration)
     }
 }
