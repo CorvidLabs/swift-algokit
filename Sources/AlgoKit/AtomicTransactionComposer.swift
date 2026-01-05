@@ -279,18 +279,18 @@ public struct SignedAtomicTransactionResult: Sendable {
 
 public extension AlgoKit {
     /**
-     * Creates a new atomic transaction composer for building transaction groups.
-     *
-     * Example usage:
-     * ```swift
-     * try await algokit.atomic()
-     *     .pay(from: alice.address, to: bob.address, amount: .algos(5))
-     *     .transferAsset(assetID, from: bob.address, to: alice.address, amount: 1000)
-     *     .build()
-     *     .signedBy([alice, bob])
-     *     .submit()
-     * ```
-     * - Returns: A new atomic transaction composer
+     Creates a new atomic transaction composer for building transaction groups.
+    
+     Example usage:
+     ```swift
+     try await algokit.atomic()
+         .pay(from: alice.address, to: bob.address, amount: .algos(5))
+         .transferAsset(assetID, from: bob.address, to: alice.address, amount: 1000)
+         .build()
+         .signedBy([alice, bob])
+         .submit()
+     ```
+     - Returns: A new atomic transaction composer
      */
     func atomic() -> AtomicTransactionComposer {
         AtomicTransactionComposer(algokit: self)
