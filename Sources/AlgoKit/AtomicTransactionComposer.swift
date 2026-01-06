@@ -4,18 +4,18 @@ public import Algorand
 // MARK: - Atomic Transaction Composer
 
 /**
-     A fluent builder for creating and submitting atomic transaction groups.
+ A fluent builder for creating and submitting atomic transaction groups.
 
-     Use the `atomic()` method on `AlgoKit` to create a new composer:
+ Use the `atomic()` method on `AlgoKit` to create a new composer:
 
-     ```swift
-     try await algokit.atomic()
-         .pay(from: alice.address, to: bob.address, amount: .algos(5))
-         .transferAsset(assetID, from: bob.address, to: alice.address, amount: 1000)
-         .build()
-         .signedBy([alice, bob])
-         .submit()
-     ```
+ ```swift
+ try await algokit.atomic()
+     .pay(from: alice.address, to: bob.address, amount: .algos(5))
+     .transferAsset(assetID, from: bob.address, to: alice.address, amount: 1000)
+     .build()
+     .signedBy([alice, bob])
+     .submit()
+ ```
  */
 public actor AtomicTransactionComposer {
 
