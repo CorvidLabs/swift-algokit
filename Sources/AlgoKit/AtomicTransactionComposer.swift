@@ -3,18 +3,20 @@ public import Algorand
 
 // MARK: - Atomic Transaction Composer
 
-/// A fluent builder for creating and submitting atomic transaction groups.
-///
-/// Use the `atomic()` method on `AlgoKit` to create a new composer:
-///
-/// ```swift
-/// try await algokit.atomic()
-///     .pay(from: alice.address, to: bob.address, amount: .algos(5))
-///     .transferAsset(assetID, from: bob.address, to: alice.address, amount: 1000)
-///     .build()
-///     .signedBy([alice, bob])
-///     .submit()
-/// ```
+/**
+ A fluent builder for creating and submitting atomic transaction groups.
+
+ Use the `atomic()` method on `AlgoKit` to create a new composer:
+
+ ```swift
+ try await algokit.atomic()
+     .pay(from: alice.address, to: bob.address, amount: .algos(5))
+     .transferAsset(assetID, from: bob.address, to: alice.address, amount: 1000)
+     .build()
+     .signedBy([alice, bob])
+     .submit()
+ ```
+ */
 public actor AtomicTransactionComposer {
 
     // MARK: - Properties
@@ -168,10 +170,8 @@ public actor AtomicTransactionComposer {
         return self
     }
 
-    /**
-     Builds and returns the result for signing.
-     - Returns: The atomic transaction result ready for signing
-     */
+    /// Builds and returns the result for signing.
+    /// - Returns: The atomic transaction result ready for signing
     public func build() throws -> AtomicTransactionResult {
         let group = try AtomicTransactionGroup(transactions: transactions)
         return AtomicTransactionResult(group: group, algokit: algokit)
@@ -258,10 +258,8 @@ public struct SignedAtomicTransactionResult: Sendable {
 
     // MARK: - Public Methods
 
-    /**
-     Submits the transaction group to the network.
-     - Returns: The transaction ID
-     */
+    /// Submits the transaction group to the network.
+    /// - Returns: The transaction ID
     public func submit() async throws -> String {
         try await algokit.algodClient.sendTransactionGroup(signedGroup)
     }
@@ -280,18 +278,21 @@ public struct SignedAtomicTransactionResult: Sendable {
 // MARK: - AlgoKit Extension
 
 public extension AlgoKit {
-    /// Creates a new atomic transaction composer for building transaction groups.
-    ///
-    /// Example usage:
-    /// ```swift
-    /// try await algokit.atomic()
-    ///     .pay(from: alice.address, to: bob.address, amount: .algos(5))
-    ///     .transferAsset(assetID, from: bob.address, to: alice.address, amount: 1000)
-    ///     .build()
-    ///     .signedBy([alice, bob])
-    ///     .submit()
-    /// ```
-    /// - Returns: A new atomic transaction composer
+    /**
+     Creates a new atomic transaction composer for building transaction groups.
+
+     Example usage:
+     ```swift
+     try await algokit.atomic()
+         .pay(from: alice.address, to: bob.address, amount: .algos(5))
+         .transferAsset(assetID, from: bob.address, to: alice.address, amount: 1000)
+         .build()
+         .signedBy([alice, bob])
+         .submit()
+     ```
+
+     - Returns: A new atomic transaction composer
+     */
     func atomic() -> AtomicTransactionComposer {
         AtomicTransactionComposer(algokit: self)
     }
