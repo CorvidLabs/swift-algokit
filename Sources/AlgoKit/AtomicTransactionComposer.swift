@@ -280,7 +280,7 @@ public struct SignedAtomicTransactionResult: Sendable {
 public extension AlgoKit {
     /**
      Creates a new atomic transaction composer for building transaction groups.
-    
+
      Example usage:
      ```swift
      try await algokit.atomic()
@@ -290,6 +290,7 @@ public extension AlgoKit {
          .signedBy([alice, bob])
          .submit()
      ```
+
      - Returns: A new atomic transaction composer
      */
     func atomic() -> AtomicTransactionComposer {
