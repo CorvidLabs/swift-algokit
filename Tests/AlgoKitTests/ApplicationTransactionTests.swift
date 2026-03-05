@@ -7,15 +7,15 @@ final class ApplicationTransactionTests: XCTestCase {
     private let genesisID = "testnet-v1.0"
     private let genesisHash = Data(repeating: 0, count: 32)
 
-    private func makeAccount() throws -> Account {
+    private func makeAccount() async throws -> Account {
         let algokit = AlgoKit(network: .testnet)
-        return try algokit.generateAccount()
+        return try await algokit.generateAccount()
     }
 
     // MARK: - Application Call (NoOp)
 
-    func test_applicationCall_buildsWithArguments() throws {
-        let caller = try makeAccount()
+    func test_applicationCall_buildsWithArguments() async throws {
+        let caller = try await makeAccount()
         let arg1 = "hello".data(using: .utf8)!
         let arg2 = "world".data(using: .utf8)!
 
@@ -33,8 +33,8 @@ final class ApplicationTransactionTests: XCTestCase {
         XCTAssertEqual(tx.applicationID, 12345)
     }
 
-    func test_applicationCall_buildsWithoutArguments() throws {
-        let caller = try makeAccount()
+    func test_applicationCall_buildsWithoutArguments() async throws {
+        let caller = try await makeAccount()
 
         let tx = ApplicationCallTransaction.call(
             sender: caller.address,
@@ -48,8 +48,8 @@ final class ApplicationTransactionTests: XCTestCase {
         XCTAssertEqual(tx.applicationID, 99999)
     }
 
-    func test_applicationCall_withForeignApps() throws {
-        let caller = try makeAccount()
+    func test_applicationCall_withForeignApps() async throws {
+        let caller = try await makeAccount()
 
         let tx = ApplicationCallTransaction.call(
             sender: caller.address,
@@ -65,8 +65,8 @@ final class ApplicationTransactionTests: XCTestCase {
         XCTAssertEqual(tx.applicationID, 12345)
     }
 
-    func test_applicationCall_withForeignAssets() throws {
-        let caller = try makeAccount()
+    func test_applicationCall_withForeignAssets() async throws {
+        let caller = try await makeAccount()
 
         let tx = ApplicationCallTransaction.call(
             sender: caller.address,
@@ -81,9 +81,9 @@ final class ApplicationTransactionTests: XCTestCase {
         XCTAssertEqual(tx.sender, caller.address)
     }
 
-    func test_applicationCall_withAccounts() throws {
-        let caller = try makeAccount()
-        let extra = try makeAccount()
+    func test_applicationCall_withAccounts() async throws {
+        let caller = try await makeAccount()
+        let extra = try await makeAccount()
 
         let tx = ApplicationCallTransaction.call(
             sender: caller.address,
@@ -100,8 +100,8 @@ final class ApplicationTransactionTests: XCTestCase {
 
     // MARK: - Application Opt-In
 
-    func test_applicationOptIn_buildsCorrectly() throws {
-        let account = try makeAccount()
+    func test_applicationOptIn_buildsCorrectly() async throws {
+        let account = try await makeAccount()
 
         let tx = ApplicationCallTransaction.optIn(
             sender: account.address,
@@ -116,8 +116,8 @@ final class ApplicationTransactionTests: XCTestCase {
         XCTAssertEqual(tx.applicationID, 67890)
     }
 
-    func test_applicationOptIn_withArguments() throws {
-        let account = try makeAccount()
+    func test_applicationOptIn_withArguments() async throws {
+        let account = try await makeAccount()
         let arg = "opt-in-data".data(using: .utf8)!
 
         let tx = ApplicationCallTransaction.optIn(
@@ -135,8 +135,8 @@ final class ApplicationTransactionTests: XCTestCase {
 
     // MARK: - Application Close Out
 
-    func test_applicationCloseOut_buildsCorrectly() throws {
-        let account = try makeAccount()
+    func test_applicationCloseOut_buildsCorrectly() async throws {
+        let account = try await makeAccount()
 
         let tx = ApplicationCallTransaction.closeOut(
             sender: account.address,
@@ -151,8 +151,8 @@ final class ApplicationTransactionTests: XCTestCase {
         XCTAssertEqual(tx.applicationID, 11111)
     }
 
-    func test_applicationCloseOut_withArguments() throws {
-        let account = try makeAccount()
+    func test_applicationCloseOut_withArguments() async throws {
+        let account = try await makeAccount()
         let arg = "close-data".data(using: .utf8)!
 
         let tx = ApplicationCallTransaction.closeOut(
@@ -170,8 +170,8 @@ final class ApplicationTransactionTests: XCTestCase {
 
     // MARK: - Application Update
 
-    func test_applicationUpdate_buildsCorrectly() throws {
-        let account = try makeAccount()
+    func test_applicationUpdate_buildsCorrectly() async throws {
+        let account = try await makeAccount()
         let approval = Data([0x01, 0x20, 0x01, 0x01, 0x22])
         let clearState = Data([0x01, 0x20, 0x01, 0x01, 0x22])
 
@@ -190,8 +190,8 @@ final class ApplicationTransactionTests: XCTestCase {
         XCTAssertEqual(tx.applicationID, 22222)
     }
 
-    func test_applicationUpdate_withArguments() throws {
-        let account = try makeAccount()
+    func test_applicationUpdate_withArguments() async throws {
+        let account = try await makeAccount()
         let approval = Data([0x01])
         let clearState = Data([0x01])
         let arg = "update-arg".data(using: .utf8)!
@@ -213,8 +213,8 @@ final class ApplicationTransactionTests: XCTestCase {
 
     // MARK: - Application Delete
 
-    func test_applicationDelete_buildsCorrectly() throws {
-        let account = try makeAccount()
+    func test_applicationDelete_buildsCorrectly() async throws {
+        let account = try await makeAccount()
 
         let tx = ApplicationCallTransaction.delete(
             sender: account.address,
@@ -229,8 +229,8 @@ final class ApplicationTransactionTests: XCTestCase {
         XCTAssertEqual(tx.applicationID, 33333)
     }
 
-    func test_applicationDelete_withArguments() throws {
-        let account = try makeAccount()
+    func test_applicationDelete_withArguments() async throws {
+        let account = try await makeAccount()
         let arg = "delete-arg".data(using: .utf8)!
 
         let tx = ApplicationCallTransaction.delete(
@@ -248,8 +248,8 @@ final class ApplicationTransactionTests: XCTestCase {
 
     // MARK: - Application Create
 
-    func test_applicationCreate_buildsCorrectly() throws {
-        let creator = try makeAccount()
+    func test_applicationCreate_buildsCorrectly() async throws {
+        let creator = try await makeAccount()
         let approval = Data([0x01, 0x20, 0x01, 0x01, 0x22])
         let clearState = Data([0x01, 0x20, 0x01, 0x01, 0x22])
 
@@ -268,8 +268,8 @@ final class ApplicationTransactionTests: XCTestCase {
         XCTAssertEqual(tx.sender, creator.address)
     }
 
-    func test_applicationCreate_withExtraPages() throws {
-        let creator = try makeAccount()
+    func test_applicationCreate_withExtraPages() async throws {
+        let creator = try await makeAccount()
         let approval = Data(repeating: 0x01, count: 100)
         let clearState = Data([0x01])
 
@@ -289,8 +289,8 @@ final class ApplicationTransactionTests: XCTestCase {
         XCTAssertEqual(tx.sender, creator.address)
     }
 
-    func test_applicationCreate_withArguments() throws {
-        let creator = try makeAccount()
+    func test_applicationCreate_withArguments() async throws {
+        let creator = try await makeAccount()
         let approval = Data([0x01])
         let clearState = Data([0x01])
         let arg = "init".data(using: .utf8)!
@@ -313,8 +313,8 @@ final class ApplicationTransactionTests: XCTestCase {
 
     // MARK: - Transaction Signing
 
-    func test_applicationCall_canBeSigned() throws {
-        let caller = try makeAccount()
+    func test_applicationCall_canBeSigned() async throws {
+        let caller = try await makeAccount()
 
         let tx = ApplicationCallTransaction.call(
             sender: caller.address,
@@ -329,8 +329,8 @@ final class ApplicationTransactionTests: XCTestCase {
         XCTAssertFalse(signed.signature.isEmpty)
     }
 
-    func test_applicationOptIn_canBeSigned() throws {
-        let account = try makeAccount()
+    func test_applicationOptIn_canBeSigned() async throws {
+        let account = try await makeAccount()
 
         let tx = ApplicationCallTransaction.optIn(
             sender: account.address,
@@ -345,8 +345,8 @@ final class ApplicationTransactionTests: XCTestCase {
         XCTAssertFalse(signed.signature.isEmpty)
     }
 
-    func test_applicationCloseOut_canBeSigned() throws {
-        let account = try makeAccount()
+    func test_applicationCloseOut_canBeSigned() async throws {
+        let account = try await makeAccount()
 
         let tx = ApplicationCallTransaction.closeOut(
             sender: account.address,
@@ -361,8 +361,8 @@ final class ApplicationTransactionTests: XCTestCase {
         XCTAssertFalse(signed.signature.isEmpty)
     }
 
-    func test_applicationDelete_canBeSigned() throws {
-        let account = try makeAccount()
+    func test_applicationDelete_canBeSigned() async throws {
+        let account = try await makeAccount()
 
         let tx = ApplicationCallTransaction.delete(
             sender: account.address,
@@ -377,8 +377,8 @@ final class ApplicationTransactionTests: XCTestCase {
         XCTAssertFalse(signed.signature.isEmpty)
     }
 
-    func test_applicationUpdate_canBeSigned() throws {
-        let account = try makeAccount()
+    func test_applicationUpdate_canBeSigned() async throws {
+        let account = try await makeAccount()
         let approval = Data([0x01])
         let clearState = Data([0x01])
 
@@ -397,8 +397,8 @@ final class ApplicationTransactionTests: XCTestCase {
         XCTAssertFalse(signed.signature.isEmpty)
     }
 
-    func test_applicationCreate_canBeSigned() throws {
-        let creator = try makeAccount()
+    func test_applicationCreate_canBeSigned() async throws {
+        let creator = try await makeAccount()
         let approval = Data([0x01])
         let clearState = Data([0x01])
 

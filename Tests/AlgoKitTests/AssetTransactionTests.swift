@@ -7,19 +7,19 @@ final class AssetTransactionTests: XCTestCase {
     private let genesisID = "testnet-v1.0"
     private let genesisHash = Data(repeating: 0, count: 32)
 
-    private func makeAccount() throws -> Account {
+    private func makeAccount() async throws -> Account {
         let algokit = AlgoKit(network: .testnet)
-        return try algokit.generateAccount()
+        return try await algokit.generateAccount()
     }
 
     // MARK: - Asset Create Transaction
 
-    func test_assetCreate_withFullParams() throws {
-        let creator = try makeAccount()
-        let manager = try makeAccount()
-        let reserve = try makeAccount()
-        let freeze = try makeAccount()
-        let clawback = try makeAccount()
+    func test_assetCreate_withFullParams() async throws {
+        let creator = try await makeAccount()
+        let manager = try await makeAccount()
+        let reserve = try await makeAccount()
+        let freeze = try await makeAccount()
+        let clawback = try await makeAccount()
 
         let assetParams = AssetParams(
             total: 10_000_000,
@@ -49,8 +49,8 @@ final class AssetTransactionTests: XCTestCase {
         XCTAssertEqual(tx.assetParams.assetName, "Full Asset")
     }
 
-    func test_assetCreate_nftParams() throws {
-        let creator = try makeAccount()
+    func test_assetCreate_nftParams() async throws {
+        let creator = try await makeAccount()
 
         let assetParams = AssetParams(
             total: 1,
@@ -75,8 +75,8 @@ final class AssetTransactionTests: XCTestCase {
         XCTAssertEqual(tx.assetParams.decimals, 0)
     }
 
-    func test_assetCreate_withMetadataHash() throws {
-        let creator = try makeAccount()
+    func test_assetCreate_withMetadataHash() async throws {
+        let creator = try await makeAccount()
         let metadataHash = Data(repeating: 0xAB, count: 32)
 
         let assetParams = AssetParams(
@@ -101,8 +101,8 @@ final class AssetTransactionTests: XCTestCase {
         XCTAssertEqual(tx.assetParams.metadataHash, metadataHash)
     }
 
-    func test_assetCreate_canBeSigned() throws {
-        let creator = try makeAccount()
+    func test_assetCreate_canBeSigned() async throws {
+        let creator = try await makeAccount()
 
         let assetParams = AssetParams(
             total: 1000,
@@ -128,8 +128,8 @@ final class AssetTransactionTests: XCTestCase {
 
     // MARK: - Asset Opt-In Transaction
 
-    func test_assetOptIn_setsCorrectFields() throws {
-        let account = try makeAccount()
+    func test_assetOptIn_setsCorrectFields() async throws {
+        let account = try await makeAccount()
 
         let tx = AssetOptInTransaction(
             sender: account.address,
@@ -144,8 +144,8 @@ final class AssetTransactionTests: XCTestCase {
         XCTAssertEqual(tx.assetID, 99999)
     }
 
-    func test_assetOptIn_canBeSigned() throws {
-        let account = try makeAccount()
+    func test_assetOptIn_canBeSigned() async throws {
+        let account = try await makeAccount()
 
         let tx = AssetOptInTransaction(
             sender: account.address,
@@ -162,9 +162,9 @@ final class AssetTransactionTests: XCTestCase {
 
     // MARK: - Asset Transfer Transaction
 
-    func test_assetTransfer_buildsCorrectly() throws {
-        let sender = try makeAccount()
-        let receiver = try makeAccount()
+    func test_assetTransfer_buildsCorrectly() async throws {
+        let sender = try await makeAccount()
+        let receiver = try await makeAccount()
 
         let tx = AssetTransferTransaction(
             sender: sender.address,
@@ -183,10 +183,10 @@ final class AssetTransactionTests: XCTestCase {
         XCTAssertEqual(tx.amount, 500)
     }
 
-    func test_assetTransfer_withCloseRemainder() throws {
-        let sender = try makeAccount()
-        let receiver = try makeAccount()
-        let closeTarget = try makeAccount()
+    func test_assetTransfer_withCloseRemainder() async throws {
+        let sender = try await makeAccount()
+        let receiver = try await makeAccount()
+        let closeTarget = try await makeAccount()
 
         let tx = AssetTransferTransaction(
             sender: sender.address,
@@ -204,9 +204,9 @@ final class AssetTransactionTests: XCTestCase {
         XCTAssertEqual(tx.closeRemainderTo, closeTarget.address)
     }
 
-    func test_assetTransfer_zeroAmount() throws {
-        let sender = try makeAccount()
-        let receiver = try makeAccount()
+    func test_assetTransfer_zeroAmount() async throws {
+        let sender = try await makeAccount()
+        let receiver = try await makeAccount()
 
         let tx = AssetTransferTransaction(
             sender: sender.address,
@@ -222,9 +222,9 @@ final class AssetTransactionTests: XCTestCase {
         XCTAssertEqual(tx.amount, 0)
     }
 
-    func test_assetTransfer_largeAmount() throws {
-        let sender = try makeAccount()
-        let receiver = try makeAccount()
+    func test_assetTransfer_largeAmount() async throws {
+        let sender = try await makeAccount()
+        let receiver = try await makeAccount()
 
         let tx = AssetTransferTransaction(
             sender: sender.address,
@@ -240,9 +240,9 @@ final class AssetTransactionTests: XCTestCase {
         XCTAssertEqual(tx.amount, UInt64.max)
     }
 
-    func test_assetTransfer_canBeSigned() throws {
-        let sender = try makeAccount()
-        let receiver = try makeAccount()
+    func test_assetTransfer_canBeSigned() async throws {
+        let sender = try await makeAccount()
+        let receiver = try await makeAccount()
 
         let tx = AssetTransferTransaction(
             sender: sender.address,
@@ -261,9 +261,9 @@ final class AssetTransactionTests: XCTestCase {
 
     // MARK: - Asset Freeze Transaction
 
-    func test_assetFreeze_freezeAccount() throws {
-        let freezeAuthority = try makeAccount()
-        let target = try makeAccount()
+    func test_assetFreeze_freezeAccount() async throws {
+        let freezeAuthority = try await makeAccount()
+        let target = try await makeAccount()
 
         let tx = AssetFreezeTransaction(
             sender: freezeAuthority.address,
@@ -282,9 +282,9 @@ final class AssetTransactionTests: XCTestCase {
         XCTAssertTrue(tx.frozen)
     }
 
-    func test_assetFreeze_unfreezeAccount() throws {
-        let freezeAuthority = try makeAccount()
-        let target = try makeAccount()
+    func test_assetFreeze_unfreezeAccount() async throws {
+        let freezeAuthority = try await makeAccount()
+        let target = try await makeAccount()
 
         let tx = AssetFreezeTransaction(
             sender: freezeAuthority.address,
@@ -300,9 +300,9 @@ final class AssetTransactionTests: XCTestCase {
         XCTAssertFalse(tx.frozen)
     }
 
-    func test_assetFreeze_canBeSigned() throws {
-        let freezeAuthority = try makeAccount()
-        let target = try makeAccount()
+    func test_assetFreeze_canBeSigned() async throws {
+        let freezeAuthority = try await makeAccount()
+        let target = try await makeAccount()
 
         let tx = AssetFreezeTransaction(
             sender: freezeAuthority.address,
@@ -321,9 +321,9 @@ final class AssetTransactionTests: XCTestCase {
 
     // MARK: - Asset Config Transaction
 
-    func test_assetConfig_update() throws {
-        let manager = try makeAccount()
-        let newManager = try makeAccount()
+    func test_assetConfig_update() async throws {
+        let manager = try await makeAccount()
+        let newManager = try await makeAccount()
 
         let tx = AssetConfigTransaction.update(
             sender: manager.address,
@@ -339,8 +339,8 @@ final class AssetTransactionTests: XCTestCase {
         XCTAssertEqual(tx.assetID, 12345)
     }
 
-    func test_assetConfig_destroy() throws {
-        let manager = try makeAccount()
+    func test_assetConfig_destroy() async throws {
+        let manager = try await makeAccount()
 
         let tx = AssetConfigTransaction.destroy(
             sender: manager.address,
@@ -355,8 +355,8 @@ final class AssetTransactionTests: XCTestCase {
         XCTAssertEqual(tx.assetID, 12345)
     }
 
-    func test_assetConfig_canBeSigned() throws {
-        let manager = try makeAccount()
+    func test_assetConfig_canBeSigned() async throws {
+        let manager = try await makeAccount()
 
         let tx = AssetConfigTransaction.update(
             sender: manager.address,
@@ -373,10 +373,10 @@ final class AssetTransactionTests: XCTestCase {
 
     // MARK: - Asset Clawback Transaction
 
-    func test_assetClawback_buildsCorrectly() throws {
-        let clawbackAuth = try makeAccount()
-        let target = try makeAccount()
-        let destination = try makeAccount()
+    func test_assetClawback_buildsCorrectly() async throws {
+        let clawbackAuth = try await makeAccount()
+        let target = try await makeAccount()
+        let destination = try await makeAccount()
 
         let tx = AssetClawbackTransaction(
             sender: clawbackAuth.address,
@@ -397,10 +397,10 @@ final class AssetTransactionTests: XCTestCase {
         XCTAssertEqual(tx.amount, 500)
     }
 
-    func test_assetClawback_canBeSigned() throws {
-        let clawbackAuth = try makeAccount()
-        let target = try makeAccount()
-        let destination = try makeAccount()
+    func test_assetClawback_canBeSigned() async throws {
+        let clawbackAuth = try await makeAccount()
+        let target = try await makeAccount()
+        let destination = try await makeAccount()
 
         let tx = AssetClawbackTransaction(
             sender: clawbackAuth.address,

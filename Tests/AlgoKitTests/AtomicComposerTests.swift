@@ -7,17 +7,17 @@ final class AtomicComposerTests: XCTestCase {
     private let genesisID = "testnet-v1.0"
     private let genesisHash = Data(repeating: 0, count: 32)
 
-    private func makeAccount() throws -> Account {
+    private func makeAccount() async throws -> Account {
         let algokit = AlgoKit(network: .testnet)
-        return try algokit.generateAccount()
+        return try await algokit.generateAccount()
     }
 
     // MARK: - AtomicTransactionComposer Builder
 
     func test_composer_addCustomTransaction() async throws {
         let algokit = AlgoKit(network: .testnet)
-        let alice = try makeAccount()
-        let bob = try makeAccount()
+        let alice = try await makeAccount()
+        let bob = try await makeAccount()
 
         let tx = PaymentTransaction(
             sender: alice.address,
@@ -36,8 +36,8 @@ final class AtomicComposerTests: XCTestCase {
 
     func test_composer_addMultipleCustomTransactions() async throws {
         let algokit = AlgoKit(network: .testnet)
-        let alice = try makeAccount()
-        let bob = try makeAccount()
+        let alice = try await makeAccount()
+        let bob = try await makeAccount()
 
         let tx1 = PaymentTransaction(
             sender: alice.address,
@@ -67,8 +67,8 @@ final class AtomicComposerTests: XCTestCase {
 
     func test_composer_buildWithCustomTransactions() async throws {
         let algokit = AlgoKit(network: .testnet)
-        let alice = try makeAccount()
-        let bob = try makeAccount()
+        let alice = try await makeAccount()
+        let bob = try await makeAccount()
 
         let tx1 = PaymentTransaction(
             sender: alice.address,
@@ -99,8 +99,8 @@ final class AtomicComposerTests: XCTestCase {
 
     func test_composer_buildSingleTransaction() async throws {
         let algokit = AlgoKit(network: .testnet)
-        let alice = try makeAccount()
-        let bob = try makeAccount()
+        let alice = try await makeAccount()
+        let bob = try await makeAccount()
 
         let tx = PaymentTransaction(
             sender: alice.address,
@@ -120,8 +120,8 @@ final class AtomicComposerTests: XCTestCase {
 
     func test_composer_addMixedTransactionTypes() async throws {
         let algokit = AlgoKit(network: .testnet)
-        let alice = try makeAccount()
-        let bob = try makeAccount()
+        let alice = try await makeAccount()
+        let bob = try await makeAccount()
 
         let payTx = PaymentTransaction(
             sender: alice.address,
@@ -153,8 +153,8 @@ final class AtomicComposerTests: XCTestCase {
 
     func test_result_signedByArray() async throws {
         let algokit = AlgoKit(network: .testnet)
-        let alice = try makeAccount()
-        let bob = try makeAccount()
+        let alice = try await makeAccount()
+        let bob = try await makeAccount()
 
         let tx1 = PaymentTransaction(
             sender: alice.address,
@@ -187,8 +187,8 @@ final class AtomicComposerTests: XCTestCase {
 
     func test_result_signedByDictionary() async throws {
         let algokit = AlgoKit(network: .testnet)
-        let alice = try makeAccount()
-        let bob = try makeAccount()
+        let alice = try await makeAccount()
+        let bob = try await makeAccount()
 
         let tx1 = PaymentTransaction(
             sender: alice.address,
@@ -221,8 +221,8 @@ final class AtomicComposerTests: XCTestCase {
 
     func test_result_signedByArrayMismatchThrows() async throws {
         let algokit = AlgoKit(network: .testnet)
-        let alice = try makeAccount()
-        let bob = try makeAccount()
+        let alice = try await makeAccount()
+        let bob = try await makeAccount()
 
         let tx1 = PaymentTransaction(
             sender: alice.address,
@@ -260,9 +260,9 @@ final class AtomicComposerTests: XCTestCase {
 
     // MARK: - AtomicTransactionGroup
 
-    func test_group_multipleTransactionsHaveGroupID() throws {
-        let alice = try makeAccount()
-        let bob = try makeAccount()
+    func test_group_multipleTransactionsHaveGroupID() async throws {
+        let alice = try await makeAccount()
+        let bob = try await makeAccount()
 
         let tx1 = PaymentTransaction(
             sender: alice.address,
@@ -299,9 +299,9 @@ final class AtomicComposerTests: XCTestCase {
         XCTAssertNotNil(group.groupID)
     }
 
-    func test_group_differentTransactionsProduceDifferentGroupIDs() throws {
-        let alice = try makeAccount()
-        let bob = try makeAccount()
+    func test_group_differentTransactionsProduceDifferentGroupIDs() async throws {
+        let alice = try await makeAccount()
+        let bob = try await makeAccount()
 
         let tx1 = PaymentTransaction(
             sender: alice.address,
@@ -329,9 +329,9 @@ final class AtomicComposerTests: XCTestCase {
         XCTAssertNotEqual(group1.groupID, group2.groupID)
     }
 
-    func test_group_signWithPartialSigners() throws {
-        let alice = try makeAccount()
-        let bob = try makeAccount()
+    func test_group_signWithPartialSigners() async throws {
+        let alice = try await makeAccount()
+        let bob = try await makeAccount()
 
         let tx1 = PaymentTransaction(
             sender: alice.address,
@@ -362,10 +362,10 @@ final class AtomicComposerTests: XCTestCase {
 
     // MARK: - Transaction Group Validation
 
-    func test_submitGroup_mismatchThrows() async {
+    func test_submitGroup_mismatchThrows() async throws {
         let algokit = AlgoKit(network: .testnet)
-        let alice = try! makeAccount()
-        let bob = try! makeAccount()
+        let alice = try await makeAccount()
+        let bob = try await makeAccount()
 
         let tx1 = PaymentTransaction(
             sender: alice.address,
