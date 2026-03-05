@@ -138,9 +138,9 @@ final class IndexerAndNetworkTests: XCTestCase {
 
     // MARK: - Key Registration Transaction Tests (Extended)
 
-    func test_keyRegistration_onlineWithStateProofKey() throws {
+    func test_keyRegistration_onlineWithStateProofKey() async throws {
         let algokit = AlgoKit(network: .testnet)
-        let account = try algokit.generateAccount()
+        let account = try await algokit.generateAccount()
 
         let voteKey = Data(repeating: 1, count: 32)
         let selectionKey = Data(repeating: 2, count: 32)
@@ -166,9 +166,9 @@ final class IndexerAndNetworkTests: XCTestCase {
         XCTAssertEqual(tx.voteKeyDilution, 10000)
     }
 
-    func test_keyRegistration_onlineCanBeSigned() throws {
+    func test_keyRegistration_onlineCanBeSigned() async throws {
         let algokit = AlgoKit(network: .testnet)
-        let account = try algokit.generateAccount()
+        let account = try await algokit.generateAccount()
 
         let tx = KeyRegistrationTransaction.online(
             sender: account.address,
@@ -187,9 +187,9 @@ final class IndexerAndNetworkTests: XCTestCase {
         XCTAssertFalse(signed.signature.isEmpty)
     }
 
-    func test_keyRegistration_offlineCanBeSigned() throws {
+    func test_keyRegistration_offlineCanBeSigned() async throws {
         let algokit = AlgoKit(network: .testnet)
-        let account = try algokit.generateAccount()
+        let account = try await algokit.generateAccount()
 
         let tx = KeyRegistrationTransaction.offline(
             sender: account.address,
@@ -205,9 +205,9 @@ final class IndexerAndNetworkTests: XCTestCase {
 
     // MARK: - Payment Transaction Tests (Extended)
 
-    func test_paymentTransaction_selfTransfer() throws {
+    func test_paymentTransaction_selfTransfer() async throws {
         let algokit = AlgoKit(network: .testnet)
-        let account = try algokit.generateAccount()
+        let account = try await algokit.generateAccount()
 
         let tx = PaymentTransaction(
             sender: account.address,
@@ -223,10 +223,10 @@ final class IndexerAndNetworkTests: XCTestCase {
         XCTAssertEqual(tx.amount.value, 0)
     }
 
-    func test_paymentTransaction_withEmptyNote() throws {
+    func test_paymentTransaction_withEmptyNote() async throws {
         let algokit = AlgoKit(network: .testnet)
-        let sender = try algokit.generateAccount()
-        let receiver = try algokit.generateAccount()
+        let sender = try await algokit.generateAccount()
+        let receiver = try await algokit.generateAccount()
 
         let tx = PaymentTransaction(
             sender: sender.address,
@@ -242,10 +242,10 @@ final class IndexerAndNetworkTests: XCTestCase {
         XCTAssertEqual(tx.note, Data())
     }
 
-    func test_paymentTransaction_withLargeNote() throws {
+    func test_paymentTransaction_withLargeNote() async throws {
         let algokit = AlgoKit(network: .testnet)
-        let sender = try algokit.generateAccount()
-        let receiver = try algokit.generateAccount()
+        let sender = try await algokit.generateAccount()
+        let receiver = try await algokit.generateAccount()
         let noteData = Data(repeating: 0x42, count: 1000)
 
         let tx = PaymentTransaction(
@@ -292,22 +292,25 @@ final class IndexerAndNetworkTests: XCTestCase {
 
     // MARK: - Account Tests (Extended)
 
-    func test_account_multipleRecoveriesAreConsistent() throws {
+    func test_account_multipleRecoveriesAreConsistent() async throws {
         let algokit = AlgoKit(network: .testnet)
-        let original = try algokit.generateAccount()
+        let original = try await algokit.generateAccount()
         let mnemonic = try original.mnemonic()
 
-        let recovered1 = try algokit.account(from: mnemonic)
-        let recovered2 = try algokit.account(from: mnemonic)
+        let recovered1 = try await algokit.account(from: mnemonic)
+        let recovered2 = try await algokit.account(from: mnemonic)
 
         XCTAssertEqual(recovered1.address, recovered2.address)
         XCTAssertEqual(recovered1.publicKey, recovered2.publicKey)
     }
 
-    func test_account_differentAccountsHaveDifferentKeys() throws {
+    func test_account_differentAccountsHaveDifferentKeys() async throws {
         let algokit = AlgoKit(network: .testnet)
 
-        let accounts = try (0..<5).map { _ in try algokit.generateAccount() }
+        var accounts: [Account] = []
+        for _ in 0..<5 {
+            accounts.append(try await algokit.generateAccount())
+        }
         let addresses = Set(accounts.map { $0.address.description })
 
         // All 5 accounts should have unique addresses
