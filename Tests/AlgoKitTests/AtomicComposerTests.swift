@@ -329,7 +329,7 @@ final class AtomicComposerTests: XCTestCase {
         XCTAssertNotEqual(group1.groupID, group2.groupID)
     }
 
-    func test_group_signWithPartialSigners() async throws {
+    func test_group_signWithPartialSigners_throws() async throws {
         let alice = try await makeAccount()
         let bob = try await makeAccount()
 
@@ -355,9 +355,13 @@ final class AtomicComposerTests: XCTestCase {
 
         let group = try AtomicTransactionGroup(transactions: [tx1, tx2])
 
-        // Sign only first transaction
-        let signedGroup = try SignedAtomicTransactionGroup.sign(group, with: [0: alice])
-        XCTAssertNotNil(signedGroup)
+        // Partial signing (missing signer for index 1) should throw
+        do {
+            _ = try SignedAtomicTransactionGroup.sign(group, with: [0: alice])
+            XCTFail("Expected error for missing signer")
+        } catch {
+            // Expected: No account provided for transaction at index 1
+        }
     }
 
     // MARK: - Transaction Group Validation
