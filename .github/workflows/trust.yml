@@ -17,6 +17,8 @@ jobs:
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0
+      - name: Fetch trusted base history
+        run: git fetch origin main:refs/remotes/origin/main
       - name: Install Trust runtime dependencies
         run: apt-get update && apt-get install -y python3 curl
       - name: Resolve comparison range
