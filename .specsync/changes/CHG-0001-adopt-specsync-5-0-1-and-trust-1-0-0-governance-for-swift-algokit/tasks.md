@@ -10,5 +10,5 @@ artifact: tasks
 - [x] Add deterministic build and test verification.
 - [x] Add standard Trust policy and immutable workflow pin.
 - [x] Pass the build and 113 deterministic tests locally.
-- [ ] Obtain authorized definition and closing approvals.
-- [ ] Confirm hosted Trust and platform checks.
+- [x] Record the authorized definition approval and begin implementation.
+- [x] Run the local build, deterministic tests, and governance checks.
