@@ -27,6 +27,13 @@
       "timestamp": 1783983412,
       "digest": "69d3e03fdf013f9548baa9875b3b80be77b14dbd58e5a55e05fdf9fb5d3ef597",
       "note": "Fresh closing approval recorded after the corrected complete contract and native verification passed."
+    },
+    {
+      "gate": "acceptance",
+      "actor": "user:0xLeif",
+      "timestamp": 1783983541,
+      "digest": "d44922df45ff8b15c9a30d0d0fee92ef970785330ce012ef904e9511b6d9d763",
+      "note": "Fresh closing approval after the same reviewed governance-path correction passed native verification."
     }
   ],
   "reopenings": [
@@ -63,6 +70,40 @@
       },
       "stale_acceptance_input_digest": "5b4e687c2ccfa0be8d34580477cdf1e780233ada42aada208f5d5cf12bad3cb3",
       "current_acceptance_input_digest": "b5d5b720a2817f626f9691a6a94e3ad3c77b1934c936c29999bbef2d6ba94702"
+    },
+    {
+      "schema_version": 1,
+      "change_id": "CHG-0001-adopt-specsync-5-0-1-and-trust-1-0-0-governance-for-swift-algokit",
+      "actor": "user:0xLeif",
+      "reason": "The reviewed meaningful-path correction changed delivery inputs covered by the earlier adoption evidence.",
+      "timestamp": 1783983501,
+      "from_state": "accepted",
+      "to_state": "verifying",
+      "superseded_approval": {
+        "gate": "acceptance",
+        "actor": "user:0xLeif",
+        "timestamp": 1783983412,
+        "digest": "69d3e03fdf013f9548baa9875b3b80be77b14dbd58e5a55e05fdf9fb5d3ef597",
+        "note": "Fresh closing approval recorded after the corrected complete contract and native verification passed."
+      },
+      "prior_verification": {
+        "timestamp": 1783983407,
+        "commit": "4d0bb405eabcb48c1f748500d4b8d0ea6a15a583",
+        "contract_digest": "941dc3121d94da676c1743bce1814f958235c8978093f662be6421950a560378",
+        "workspace_digest": "47bcb33e3ff05b59fe3f5eb569e8aae82d2b66486a5033ed4f6f1d4420257ce8",
+        "acceptance_input_digest": "b5d5b720a2817f626f9691a6a94e3ad3c77b1934c936c29999bbef2d6ba94702",
+        "passed": true,
+        "commands": [
+          {
+            "command": "fledge lanes run verify",
+            "success": true,
+            "exit_code": 0
+          }
+        ],
+        "requirement_ids": []
+      },
+      "stale_acceptance_input_digest": "b5d5b720a2817f626f9691a6a94e3ad3c77b1934c936c29999bbef2d6ba94702",
+      "current_acceptance_input_digest": "d2a3feaff1e9a71b51603848393ffa50a96ce379e7d79ce13809a0ced0551743"
     }
   ]
 }
