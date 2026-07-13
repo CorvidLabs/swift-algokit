@@ -19,6 +19,12 @@
     "yarn.lock",
     "Package.swift",
     "Package.resolved",
+    "README.md",
+    "AGENTS.md",
+    "fledge.toml",
+    ".trust.toml",
+    ".augur.yml",
+    ".attest.json",
     "go.mod",
     "go.sum",
     "pyproject.toml",
@@ -29,10 +35,7 @@
     ".specsync/config.json",
     ".specsync/version"
   ],
-  "ignored_paths": [
-    ".specsync/",
-    "specs/"
-  ],
+  "ignored_paths": [],
   "verification_commands": [
     "fledge lanes run verify"
   ],

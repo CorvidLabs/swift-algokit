@@ -1,0 +1,19 @@
+{
+  "approvals": [
+    {
+      "gate": "definition",
+      "actor": "user:0xLeif",
+      "timestamp": 1783982975,
+      "digest": "736ca999095211c18513988182d06c8abeca22b7ce77edc7d6d551b4e7084b63",
+      "note": "Definition reviewed against the existing Swift sources, public exports, deterministic tests, and explicit localnet boundary."
+    },
+    {
+      "gate": "acceptance",
+      "actor": "user:0xLeif",
+      "timestamp": 1783983382,
+      "digest": "397dbed73bb0e3b1c00e99abb39ab8816ac4c011185433bcbdf3e7eba66b76d4",
+      "note": "Closing approval recorded after strict 100 percent coverage, all four integrations, healthy Trust configuration, native build, and 113 deterministic tests passed."
+    }
+  ],
+  "reopenings": []
+}

@@ -6,9 +6,10 @@
   "description": "Adopt SpecSync 5.0.1 and Trust 1.0.0 governance for Swift AlgoKit",
   "kind": "migration",
   "state": "accepted",
+  "canonical_applied": true,
   "base_commit": "39a7059eb1010bbfe9894871c58441bdd2f4a47b",
   "created_at": 1783884714,
-  "updated_at": 1783926665,
+  "updated_at": 1783983412,
   "affected_specs": [],
   "affected_paths": [
     ".github/",
