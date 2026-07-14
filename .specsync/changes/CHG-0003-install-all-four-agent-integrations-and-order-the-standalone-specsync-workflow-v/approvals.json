@@ -1,0 +1,19 @@
+{
+  "approvals": [
+    {
+      "gate": "definition",
+      "actor": "user:0xLeif",
+      "timestamp": 1783986355,
+      "digest": "368e1bed5cfb15f84469c0a96b00f327cfb7f49c4a5023ca6fd5d037374d5f85",
+      "note": "Approved governance-only integration and workflow-order correction after review of complete CHG3 artifacts."
+    },
+    {
+      "gate": "acceptance",
+      "actor": "user:0xLeif",
+      "timestamp": 1783986558,
+      "digest": "060ae7b1d53b2f8cd8c62fd0a001058c8568af2a4e03a4cd3c95495b7131d167",
+      "note": "Accepted after supported verification confirmed the native build and all 113 deterministic tests; the change is limited to generated agent integrations and governance workflow ordering."
+    }
+  ],
+  "reopenings": []
+}

@@ -1,0 +1,7 @@
+[tasks]
+build = "swift build -v"
+test = "swift test -v --skip LocalnetTests"
+
+[lanes.verify]
+description = "Build and run deterministic Swift AlgoKit tests"
+steps = ["build", "test"]

@@ -1,0 +1,124 @@
+{
+  "approvals": [
+    {
+      "gate": "definition",
+      "actor": "user:0xLeif",
+      "timestamp": 1783982975,
+      "digest": "736ca999095211c18513988182d06c8abeca22b7ce77edc7d6d551b4e7084b63",
+      "note": "Definition reviewed against the existing Swift sources, public exports, deterministic tests, and explicit localnet boundary."
+    },
+    {
+      "gate": "acceptance",
+      "actor": "user:0xLeif",
+      "timestamp": 1783983382,
+      "digest": "397dbed73bb0e3b1c00e99abb39ab8816ac4c011185433bcbdf3e7eba66b76d4",
+      "note": "Closing approval recorded after strict 100 percent coverage, all four integrations, healthy Trust configuration, native build, and 113 deterministic tests passed."
+    },
+    {
+      "gate": "acceptance",
+      "actor": "user:0xLeif",
+      "timestamp": 1783983540,
+      "digest": "fc9434d2b388fc934bcf993af2333f88559f0fcf6056f13b05f88d24ab81f534",
+      "note": "Fresh closing approval after correcting the governed Augur filename and covering every generated agent integration path; strict coverage and 113 tests passed."
+    },
+    {
+      "gate": "acceptance",
+      "actor": "user:0xLeif",
+      "timestamp": 1783986541,
+      "digest": "549accf61724a5ea8e2d01b90b34790d357e65647a28fb4eb166269c72ea3f06",
+      "note": "Fresh closing approval after audited reopen and supported verification passed the native build and all 113 deterministic tests; the accepted definition and canonical spec are unchanged."
+    }
+  ],
+  "reopenings": [
+    {
+      "schema_version": 1,
+      "change_id": "CHG-0002-document-the-existing-swift-algokit-api-at-complete-coverage-and-correct-rollout",
+      "actor": "user:0xLeif",
+      "reason": "A valid non-semantic review correction identified the wrong Augur filename and missing agent-integration governance paths.",
+      "timestamp": 1783983501,
+      "from_state": "accepted",
+      "to_state": "verifying",
+      "superseded_approval": {
+        "gate": "acceptance",
+        "actor": "user:0xLeif",
+        "timestamp": 1783983382,
+        "digest": "397dbed73bb0e3b1c00e99abb39ab8816ac4c011185433bcbdf3e7eba66b76d4",
+        "note": "Closing approval recorded after strict 100 percent coverage, all four integrations, healthy Trust configuration, native build, and 113 deterministic tests passed."
+      },
+      "prior_verification": {
+        "timestamp": 1783983359,
+        "commit": "4d0bb405eabcb48c1f748500d4b8d0ea6a15a583",
+        "contract_digest": "736ca999095211c18513988182d06c8abeca22b7ce77edc7d6d551b4e7084b63",
+        "workspace_digest": "ac9b77bb1748c678dcc04187cdc7ac0f35e65ff032b2849665029cfc48caaf7b",
+        "acceptance_input_digest": "d082b2f91a303300bb0392abc7cf80c9b06122e006b9187902a55569847e2e70",
+        "passed": true,
+        "commands": [
+          {
+            "command": "fledge lanes run verify",
+            "success": true,
+            "exit_code": 0
+          }
+        ],
+        "requirement_ids": [
+          "REQ-algokit-001",
+          "REQ-algokit-002",
+          "REQ-algokit-003",
+          "REQ-algokit-004",
+          "REQ-algokit-005",
+          "REQ-algokit-006",
+          "REQ-algokit-007",
+          "REQ-algokit-008",
+          "REQ-algokit-009",
+          "REQ-algokit-010"
+        ]
+      },
+      "stale_acceptance_input_digest": "d082b2f91a303300bb0392abc7cf80c9b06122e006b9187902a55569847e2e70",
+      "current_acceptance_input_digest": "14f925220223b5f614076863816355502bef4da7bab9def82f0115a27ded4c45"
+    },
+    {
+      "schema_version": 1,
+      "change_id": "CHG-0002-document-the-existing-swift-algokit-api-at-complete-coverage-and-correct-rollout",
+      "actor": "user:0xLeif",
+      "reason": "The accepted delivery evidence became stale after the separately scoped agent integration and workflow-order configuration changed; the accepted CHG2 definition and canonical spec remain unchanged.",
+      "timestamp": 1783986520,
+      "from_state": "accepted",
+      "to_state": "verifying",
+      "superseded_approval": {
+        "gate": "acceptance",
+        "actor": "user:0xLeif",
+        "timestamp": 1783983540,
+        "digest": "fc9434d2b388fc934bcf993af2333f88559f0fcf6056f13b05f88d24ab81f534",
+        "note": "Fresh closing approval after correcting the governed Augur filename and covering every generated agent integration path; strict coverage and 113 tests passed."
+      },
+      "prior_verification": {
+        "timestamp": 1783983521,
+        "commit": "538f4c15cbbd3051bd100d2bbb47cd8176683b41",
+        "contract_digest": "736ca999095211c18513988182d06c8abeca22b7ce77edc7d6d551b4e7084b63",
+        "workspace_digest": "864935f7a8731201cdd030f043bc41270d974e586778b968003f6178cd91602d",
+        "acceptance_input_digest": "14f925220223b5f614076863816355502bef4da7bab9def82f0115a27ded4c45",
+        "passed": true,
+        "commands": [
+          {
+            "command": "fledge lanes run verify",
+            "success": true,
+            "exit_code": 0
+          }
+        ],
+        "requirement_ids": [
+          "REQ-algokit-001",
+          "REQ-algokit-002",
+          "REQ-algokit-003",
+          "REQ-algokit-004",
+          "REQ-algokit-005",
+          "REQ-algokit-006",
+          "REQ-algokit-007",
+          "REQ-algokit-008",
+          "REQ-algokit-009",
+          "REQ-algokit-010"
+        ]
+      },
+      "stale_acceptance_input_digest": "14f925220223b5f614076863816355502bef4da7bab9def82f0115a27ded4c45",
+      "current_acceptance_input_digest": "4e3bd8c3d3eb1634d08a7e27f73f55e93fb37987434c085bf10c45d5f8da4469"
+    }
+  ]
+}
