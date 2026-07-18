@@ -27,6 +27,13 @@
       "timestamp": 1783986541,
       "digest": "549accf61724a5ea8e2d01b90b34790d357e65647a28fb4eb166269c72ea3f06",
       "note": "Fresh closing approval after audited reopen and supported verification passed the native build and all 113 deterministic tests; the accepted definition and canonical spec are unchanged."
+    },
+    {
+      "gate": "acceptance",
+      "actor": "user:0xLeif",
+      "timestamp": 1784415782,
+      "digest": "c116fc92cf1da1d06aac1abb148d59c692ed0ea1506b9adaa9d8bc3e7cea600a",
+      "note": "Re-acceptance with the Trust 1.1.1 and SpecSync 5.1.1 pins; canonical deltas were already integrated and were not replayed."
     }
   ],
   "reopenings": [
@@ -119,6 +126,51 @@
       },
       "stale_acceptance_input_digest": "14f925220223b5f614076863816355502bef4da7bab9def82f0115a27ded4c45",
       "current_acceptance_input_digest": "4e3bd8c3d3eb1634d08a7e27f73f55e93fb37987434c085bf10c45d5f8da4469"
+    },
+    {
+      "schema_version": 1,
+      "change_id": "CHG-0002-document-the-existing-swift-algokit-api-at-complete-coverage-and-correct-rollout",
+      "actor": "user:0xLeif",
+      "reason": "Trust 1.1.1 and SpecSync 5.1.1 pins changed governed delivery inputs; accepted verification is stale.",
+      "timestamp": 1784415639,
+      "from_state": "accepted",
+      "to_state": "verifying",
+      "superseded_approval": {
+        "gate": "acceptance",
+        "actor": "user:0xLeif",
+        "timestamp": 1783986541,
+        "digest": "549accf61724a5ea8e2d01b90b34790d357e65647a28fb4eb166269c72ea3f06",
+        "note": "Fresh closing approval after audited reopen and supported verification passed the native build and all 113 deterministic tests; the accepted definition and canonical spec are unchanged."
+      },
+      "prior_verification": {
+        "timestamp": 1783986535,
+        "commit": "ed08f33e5df68d3cc5065f4501bc7126e47d0a36",
+        "contract_digest": "736ca999095211c18513988182d06c8abeca22b7ce77edc7d6d551b4e7084b63",
+        "workspace_digest": "fb540cb7bc51c79199a4d725ac2d53c55f24166bcc0f6e557fae4cd4903ae0ce",
+        "acceptance_input_digest": "4e3bd8c3d3eb1634d08a7e27f73f55e93fb37987434c085bf10c45d5f8da4469",
+        "passed": true,
+        "commands": [
+          {
+            "command": "fledge lanes run verify",
+            "success": true,
+            "exit_code": 0
+          }
+        ],
+        "requirement_ids": [
+          "REQ-algokit-001",
+          "REQ-algokit-002",
+          "REQ-algokit-003",
+          "REQ-algokit-004",
+          "REQ-algokit-005",
+          "REQ-algokit-006",
+          "REQ-algokit-007",
+          "REQ-algokit-008",
+          "REQ-algokit-009",
+          "REQ-algokit-010"
+        ]
+      },
+      "stale_acceptance_input_digest": "4e3bd8c3d3eb1634d08a7e27f73f55e93fb37987434c085bf10c45d5f8da4469",
+      "current_acceptance_input_digest": "d3e253048b8da46afe71622ed300b8ce3fa06b02a7b868266c89424cb3df6bc7"
     }
   ]
 }

@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "attempts": [
+    {
+      "timestamp": 1784415768,
+      "commit": "cf2ded7b3ae9f43f967a9dc19cd8b9b51ec7c1f4",
+      "contract_digest": "736ca999095211c18513988182d06c8abeca22b7ce77edc7d6d551b4e7084b63",
+      "workspace_digest": "5a5d84ec329ffc7c719f186cde2a0fdca0e5025e4f11bd2f7c77e943ce9195d4",
+      "passed": true,
+      "commands": [
+        {
+          "command": "fledge lanes run verify",
+          "success": true,
+          "exit_code": 0
+        }
+      ],
+      "requirement_ids": [
+        "REQ-algokit-001",
+        "REQ-algokit-002",
+        "REQ-algokit-003",
+        "REQ-algokit-004",
+        "REQ-algokit-005",
+        "REQ-algokit-006",
+        "REQ-algokit-007",
+        "REQ-algokit-008",
+        "REQ-algokit-009",
+        "REQ-algokit-010"
+      ]
+    }
+  ]
+}

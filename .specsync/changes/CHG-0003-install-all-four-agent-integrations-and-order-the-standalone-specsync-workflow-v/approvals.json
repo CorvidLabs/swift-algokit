@@ -13,7 +13,49 @@
       "timestamp": 1783986558,
       "digest": "060ae7b1d53b2f8cd8c62fd0a001058c8568af2a4e03a4cd3c95495b7131d167",
       "note": "Accepted after supported verification confirmed the native build and all 113 deterministic tests; the change is limited to generated agent integrations and governance workflow ordering."
+    },
+    {
+      "gate": "acceptance",
+      "actor": "user:0xLeif",
+      "timestamp": 1784415811,
+      "digest": "a573dc635966f54a24866e45965684370465e98d79375425ebbb790cd522cd1f",
+      "note": "Re-acceptance with the Trust 1.1.1 and SpecSync 5.1.1 pins; canonical deltas were already integrated and were not replayed."
     }
   ],
-  "reopenings": []
+  "reopenings": [
+    {
+      "schema_version": 1,
+      "change_id": "CHG-0003-install-all-four-agent-integrations-and-order-the-standalone-specsync-workflow-v",
+      "actor": "user:0xLeif",
+      "reason": "Trust 1.1.1 and SpecSync 5.1.1 pins changed governed delivery inputs; accepted verification is stale.",
+      "timestamp": 1784415661,
+      "from_state": "accepted",
+      "to_state": "verifying",
+      "superseded_approval": {
+        "gate": "acceptance",
+        "actor": "user:0xLeif",
+        "timestamp": 1783986558,
+        "digest": "060ae7b1d53b2f8cd8c62fd0a001058c8568af2a4e03a4cd3c95495b7131d167",
+        "note": "Accepted after supported verification confirmed the native build and all 113 deterministic tests; the change is limited to generated agent integrations and governance workflow ordering."
+      },
+      "prior_verification": {
+        "timestamp": 1783986553,
+        "commit": "ed08f33e5df68d3cc5065f4501bc7126e47d0a36",
+        "contract_digest": "368e1bed5cfb15f84469c0a96b00f327cfb7f49c4a5023ca6fd5d037374d5f85",
+        "workspace_digest": "fb540cb7bc51c79199a4d725ac2d53c55f24166bcc0f6e557fae4cd4903ae0ce",
+        "acceptance_input_digest": "1b8118c6af0f970530e3c9bc065b6c0c51c0d6349473bd4923bde4c192ba41e4",
+        "passed": true,
+        "commands": [
+          {
+            "command": "fledge lanes run verify",
+            "success": true,
+            "exit_code": 0
+          }
+        ],
+        "requirement_ids": []
+      },
+      "stale_acceptance_input_digest": "1b8118c6af0f970530e3c9bc065b6c0c51c0d6349473bd4923bde4c192ba41e4",
+      "current_acceptance_input_digest": "05a9598ff6d3d1aa80f7f627738d8e6386dd726372fad427fa9bb35e34e23481"
+    }
+  ]
 }

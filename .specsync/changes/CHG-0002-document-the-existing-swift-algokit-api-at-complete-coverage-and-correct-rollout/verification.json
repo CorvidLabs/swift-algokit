@@ -1,9 +1,214 @@
 {
-  "timestamp": 1783986535,
-  "commit": "ed08f33e5df68d3cc5065f4501bc7126e47d0a36",
+  "timestamp": 1784415768,
+  "commit": "cf2ded7b3ae9f43f967a9dc19cd8b9b51ec7c1f4",
   "contract_digest": "736ca999095211c18513988182d06c8abeca22b7ce77edc7d6d551b4e7084b63",
-  "workspace_digest": "fb540cb7bc51c79199a4d725ac2d53c55f24166bcc0f6e557fae4cd4903ae0ce",
-  "acceptance_input_digest": "4e3bd8c3d3eb1634d08a7e27f73f55e93fb37987434c085bf10c45d5f8da4469",
+  "workspace_digest": "5a5d84ec329ffc7c719f186cde2a0fdca0e5025e4f11bd2f7c77e943ce9195d4",
+  "acceptance_input_digest": "b0616961f399e921605b061673674546b1000b4d69dad795d0bedb54e506a5a6",
+  "acceptance_manifest": {
+    "schema_version": 1,
+    "entries": [
+      {
+        "path": ".github/workflows/trust.yml",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "b04cdee06d69a77377bb39a6ded1a944cf416f431b1feca2692eeed244e42813",
+        "entry_digest": "d8d38bfe82f88f14c72c0203d166be8b3f2f55ab9d50127f4ddee88f6e3a4df5",
+        "owners": [
+          "@exact:delivery"
+        ]
+      },
+      {
+        "path": ".specsync/sdd.json",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "c92cbe18fbf227e4ae4d17ed96a35d646419813442aa39976cb279d3753143fd",
+        "entry_digest": "745759f40a076630bc7257f60d15b9071e986e91fbb5a1b018f191386019720b",
+        "owners": [
+          "@exact:delivery"
+        ]
+      },
+      {
+        "path": ".trust.toml",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "0ca37f8dc00590f9fa1acbbbc0819dd4c39d7968a49fe784b8180520a856a4de",
+        "entry_digest": "c97d671502e9908684fe170ba284831dac9caa819ed1d567b776187ec17fa77f",
+        "owners": [
+          "@exact:delivery"
+        ]
+      },
+      {
+        "path": "Sources/AlgoKit/AlgoKit+Account.swift",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "5279f10a7cf6168f02af12f0aa01b2f24012f8cf32c71a0f13ed4b3e23361147",
+        "entry_digest": "71861995db78785ccf0d925ae69a73b76ca343bd3ad3a87bcc3849e77916fb5f",
+        "owners": [
+          "algokit"
+        ]
+      },
+      {
+        "path": "Sources/AlgoKit/AlgoKit+Application.swift",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "87287b5b4b5ec0dd2fd3bd044cdce0f7213d692ca05b2781b9cf6e9b417385fd",
+        "entry_digest": "a2d3d7e8663bdcd842514e4c8587033362eab9f46dc59bedd306404cbcf4ec0d",
+        "owners": [
+          "algokit"
+        ]
+      },
+      {
+        "path": "Sources/AlgoKit/AlgoKit+Asset.swift",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "23476d187d588539aeace263c3ecc2c788a97df481a4584c906832d2e33ff048",
+        "entry_digest": "f2161f023710304b4ac8eefca309000c955bbcf822026f3ff04e3545c1f213b6",
+        "owners": [
+          "algokit"
+        ]
+      },
+      {
+        "path": "Sources/AlgoKit/AlgoKit+Indexer.swift",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "2b461ee6e62ca471745858514c76d5b02ed924b0e2fa2be7f6d0d31b8b7faac8",
+        "entry_digest": "09c34a935a1beb18213177691114c75037db700b0773da59d92ec56bbcb278ae",
+        "owners": [
+          "algokit"
+        ]
+      },
+      {
+        "path": "Sources/AlgoKit/AlgoKit+KeyRegistration.swift",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "8a4850761b79009fd1601ea3037e99e9331fb7e4f8c18d1787ab040d0d5bea50",
+        "entry_digest": "20720c26ad1428fbfd4a67a02e696801defe0a6cbe748f90423a0ecbc07a4fda",
+        "owners": [
+          "algokit"
+        ]
+      },
+      {
+        "path": "Sources/AlgoKit/AlgoKit+Network.swift",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "6587e715a6859619fe21983e8e2ed191db9fb4e86fe2683f29107e20673c064d",
+        "entry_digest": "dcae40c51b5f531773a8e85fcca2ff6f9ed1ef83c4b40a0b61cf701960f7cc81",
+        "owners": [
+          "algokit"
+        ]
+      },
+      {
+        "path": "Sources/AlgoKit/AlgoKit+Payment.swift",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "c92be880096dca5db697ba285cb0749cb7ffee5c6c1416d7a3fda517bb70e1a5",
+        "entry_digest": "c6e56ff65b4ceb7c8544b50f6c82b648b3b76761c9400b86d44f5c4e3e00129c",
+        "owners": [
+          "algokit"
+        ]
+      },
+      {
+        "path": "Sources/AlgoKit/AlgoKit+Transaction.swift",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "cef3b538462615664728187ed1c90101f244a355d2d188ca659795a2efc406c1",
+        "entry_digest": "de9b1b57901c68463fbfdd08a3a5b36da37152496cb8e700c67dceca5bfa73f7",
+        "owners": [
+          "algokit"
+        ]
+      },
+      {
+        "path": "Sources/AlgoKit/AlgoKit.swift",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "bf7a03f16850b749f8562e31f7f4c135bf9037b63e33743e6989e42d3e71d676",
+        "entry_digest": "e29152cbda4cfbe9fc3b06ff3d1a068454a7222a1d0113793f897129470da437",
+        "owners": [
+          "algokit"
+        ]
+      },
+      {
+        "path": "Sources/AlgoKit/AtomicTransactionComposer.swift",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "92bbfd6c3631fab547b2b986194367fc30351147e7ca5ac4969f4f415da8b572",
+        "entry_digest": "4280c596e3f83ab9bbca329deab2fff55b88fd8712a29a3e7e7a76b91e2e12ea",
+        "owners": [
+          "algokit"
+        ]
+      },
+      {
+        "path": "Sources/AlgoKit/Extensions/MicroAlgos+Convenience.swift",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "b269ab5e4866f199ae9ab49e63f89eb8d7c09aefb97a06cc78942506683e19cb",
+        "entry_digest": "337450d6c34e55521b422e7ea20bd0160fcb1bb4d76e49bc194fc85709d75d0e",
+        "owners": [
+          "algokit"
+        ]
+      },
+      {
+        "path": "specs/algokit",
+        "kind": "non_file",
+        "mode": 0,
+        "payload_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "entry_digest": "1cc013eef40804b601344926942f5b2fb57682ca53ec294a1901e00115b071fb",
+        "owners": [
+          "@exact:delivery"
+        ]
+      },
+      {
+        "path": "specs/algokit/algokit.spec.md",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "08b7354d257c016c412c25f68d6ace7798f8621888c9cb70fee2cb27fdea06ef",
+        "entry_digest": "cc75fd6af742d715b18134a975f566d9078b321001b0d5bc289499a0f8e73227",
+        "owners": [
+          "algokit"
+        ]
+      },
+      {
+        "path": "specs/algokit/context.md",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "02d5fde7252d34eb3e71c26e84709c9a85aa4b0bb203b514fa6033094e41164e",
+        "entry_digest": "096462fc19bfbc12e26bcd842ce1b740f281dcdbf8a16816096177eb749b36bd",
+        "owners": [
+          "algokit"
+        ]
+      },
+      {
+        "path": "specs/algokit/requirements.md",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "fddd464df125f005360520befd6b3fca9055c0bdf444db83547a679a9e23f999",
+        "entry_digest": "8785d241c14636d6f37e9779dce6e9fc4ffde5548e2e9236df5f16e61a1177ca",
+        "owners": [
+          "algokit"
+        ]
+      },
+      {
+        "path": "specs/algokit/tasks.md",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "82207aac74b7dea20aaced956cebb1118ea7522034b4af4ca9515942a8fd8dac",
+        "entry_digest": "b8609959a02423fe6cea0a32109a73df17a705fefd854da67efcf36c7145114f",
+        "owners": [
+          "algokit"
+        ]
+      },
+      {
+        "path": "specs/algokit/testing.md",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "59c5f84c0de59b4d39023a07e26234e6a28867fec90aa8f17abcea989a65a311",
+        "entry_digest": "d0cb7ba51206e1b71da9b96d0d003c0ed24c85c47639946729be7a342b5280b1",
+        "owners": [
+          "algokit"
+        ]
+      }
+    ]
+  },
   "passed": true,
   "commands": [
     {

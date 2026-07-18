@@ -9,7 +9,7 @@
   "canonical_applied": true,
   "base_commit": "4d0bb405eabcb48c1f748500d4b8d0ea6a15a583",
   "created_at": 1783982568,
-  "updated_at": 1783986541,
+  "updated_at": 1784415782,
   "affected_specs": [
     "algokit"
   ],

@@ -1,9 +1,164 @@
 {
-  "timestamp": 1783986671,
-  "commit": "ed08f33e5df68d3cc5065f4501bc7126e47d0a36",
+  "timestamp": 1784415714,
+  "commit": "cf2ded7b3ae9f43f967a9dc19cd8b9b51ec7c1f4",
   "contract_digest": "941dc3121d94da676c1743bce1814f958235c8978093f662be6421950a560378",
-  "workspace_digest": "fb540cb7bc51c79199a4d725ac2d53c55f24166bcc0f6e557fae4cd4903ae0ce",
-  "acceptance_input_digest": "a3f29faf7e668dd18c51c6d1e2b60c7fbdd4cffa2ddb60cb61e9c6768583a0f9",
+  "workspace_digest": "5a5d84ec329ffc7c719f186cde2a0fdca0e5025e4f11bd2f7c77e943ce9195d4",
+  "acceptance_input_digest": "3c8b2f9ecfac28055a82fb5e99ec31ea9cbaea6a3221ec30cb1ad4b8bed93ae9",
+  "acceptance_manifest": {
+    "schema_version": 1,
+    "entries": [
+      {
+        "path": ".attest.json",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "2581fe52873327db0bbac357a5102a0dbb18a1eea5a690b7b75eaa571e50cf65",
+        "entry_digest": "2904a18e18582f191a1d359d16e7bc61a7596ac77f62e55a94de56b3da8c796e",
+        "owners": [
+          "@exact:delivery"
+        ]
+      },
+      {
+        "path": ".augur.toml",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "17f6ad5b84b4db012f0e3f398a96a478c1324fd47e72e1dd2a13c7cf9a432983",
+        "entry_digest": "bac13c952da05292bdd0af5849aad9d9def3ae5afc830fa42b6914b2fd874beb",
+        "owners": [
+          "@exact:delivery"
+        ]
+      },
+      {
+        "path": ".github/workflows/docs.yml",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "3ca6f1d83fddb1d1296074145ad5d69c31ef53af1fc4a77401e49fc0d74daf11",
+        "entry_digest": "7b9776d8dacfff1e31129a15fe41217ad537652a9b85d01c7241e7e1a2c3be3c",
+        "owners": [
+          "@exact:delivery"
+        ]
+      },
+      {
+        "path": ".github/workflows/macOS.yml",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "b3874a5f87c31f99c83a9b5441a8f018dcd448ec7ee81593395a23312f2b0c35",
+        "entry_digest": "0f0e333601ff95c8300df1f476897733730e6b41e7ec4975f3a26f292f1c47e1",
+        "owners": [
+          "@exact:delivery"
+        ]
+      },
+      {
+        "path": ".github/workflows/trust.yml",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "b04cdee06d69a77377bb39a6ded1a944cf416f431b1feca2692eeed244e42813",
+        "entry_digest": "d8d38bfe82f88f14c72c0203d166be8b3f2f55ab9d50127f4ddee88f6e3a4df5",
+        "owners": [
+          "@exact:delivery"
+        ]
+      },
+      {
+        "path": ".github/workflows/ubuntu.yml",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "64841487c627dab97e335ba865f7bc5047a3f2a3d29a2c3c465a4204ea5b997f",
+        "entry_digest": "c7bda18b9b0a228895273ea1d507ccf842381cc0adcabd1feea4954b5952176e",
+        "owners": [
+          "@exact:delivery"
+        ]
+      },
+      {
+        "path": ".specsync/.gitignore",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "a505253bd2fdfb84f8121e89e48bbc67144082b5a88f439ee6acfb45424799b0",
+        "entry_digest": "ec3b8bd021ac6ac36ddfba3d0d6b84535be8074b917e9bffa050216e422d1792",
+        "owners": [
+          "@exact:delivery"
+        ]
+      },
+      {
+        "path": ".specsync/adoption-report.json",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "6a6f15eda65f5a68d1282f7177cb12167ce248f023ecbadf826db09656f915d3",
+        "entry_digest": "571e12e5b90654f4efc47b67b1ba7d75fe40146d047207b0162bf851969f02fd",
+        "owners": [
+          "@exact:delivery"
+        ]
+      },
+      {
+        "path": ".specsync/config.toml",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "73de5bc8fdc419a5cd499845e040e3ec687f0ed7eb1dcbaa0777e0caf204e883",
+        "entry_digest": "5ebdc88fc9417e9faf562ad7da3c042f99e8b2808cdf50d99790df44abdfa02f",
+        "owners": [
+          "@exact:delivery"
+        ]
+      },
+      {
+        "path": ".specsync/registry.toml",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "dfdbb832850219a98a424e22df244b984eff1a21528be305c25f7cdc8c14c273",
+        "entry_digest": "4481a40cb9bb464608fc71ffebe7a73e97462e24903db1076a669e8970b8053e",
+        "owners": [
+          "@exact:delivery"
+        ]
+      },
+      {
+        "path": ".specsync/sdd.json",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "c92cbe18fbf227e4ae4d17ed96a35d646419813442aa39976cb279d3753143fd",
+        "entry_digest": "745759f40a076630bc7257f60d15b9071e986e91fbb5a1b018f191386019720b",
+        "owners": [
+          "@exact:delivery"
+        ]
+      },
+      {
+        "path": ".specsync/version",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "23b6867924dfeb9cf532753438dc919669bf93ad88215e11c15630a4acbf4299",
+        "entry_digest": "339b5f88be30302336707baa5dab61fd4b324d04e495d3bb772cf893fb4f73bc",
+        "owners": [
+          "@exact:delivery"
+        ]
+      },
+      {
+        "path": ".trust.toml",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "0ca37f8dc00590f9fa1acbbbc0819dd4c39d7968a49fe784b8180520a856a4de",
+        "entry_digest": "c97d671502e9908684fe170ba284831dac9caa819ed1d567b776187ec17fa77f",
+        "owners": [
+          "@exact:delivery"
+        ]
+      },
+      {
+        "path": "AGENTS.md",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "d2561f21b1519604865b1ae0c4a6586f5f2bea591c9b3b7d8c4ae0f274b73df5",
+        "entry_digest": "616b86acb3d91a5f9880826f4063978e95d46397de849b7566f3688823302e01",
+        "owners": [
+          "@exact:delivery"
+        ]
+      },
+      {
+        "path": "fledge.toml",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "4452faf40f3454fe4f5f300b87d46ae49395e226b4fc26d0efb98dffa2e68f2a",
+        "entry_digest": "8463ed945de9fae3d4ebede29d7c0d9eaacd45b4adcffc9d649547f2085c8c61",
+        "owners": [
+          "@exact:delivery"
+        ]
+      }
+    ]
+  },
   "passed": true,
   "commands": [
     {
