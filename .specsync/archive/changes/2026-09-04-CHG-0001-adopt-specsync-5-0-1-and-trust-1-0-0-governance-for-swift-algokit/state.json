@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "CHG-0001-adopt-specsync-5-0-1-and-trust-1-0-0-governance-for-swift-algokit",
+  "slug": "adopt-specsync-5-0-1-and-trust-1-0-0-governance-for-swift-algokit",
+  "title": "Adopt SpecSync 5.0.1 and Trust 1.0.0 governance for Swift AlgoKit",
+  "description": "Adopt SpecSync 5.0.1 and Trust 1.0.0 governance for Swift AlgoKit",
+  "kind": "migration",
+  "state": "archived",
+  "canonical_applied": true,
+  "base_commit": "39a7059eb1010bbfe9894871c58441bdd2f4a47b",
+  "created_at": 1783884714,
+  "updated_at": 1788502652,
+  "affected_specs": [],
+  "affected_paths": [
+    ".github/",
+    ".specsync/",
+    ".trust.toml",
+    ".augur.toml",
+    ".attest.json",
+    "AGENTS.md",
+    "fledge.toml"
+  ],
+  "no_spec_change": true,
+  "no_spec_change_rationale": "This migration adds governance configuration and CI orchestration without changing Swift AlgoKit behavior; future meaningful implementation changes must add or update canonical specifications.",
+  "acceptance_criteria": [
+    "SpecSync advisory coverage passes; all four agent integrations are installed; Trust doctor passes; Swift build and 113 deterministic tests pass; existing Linux, macOS, localnet, documentation, and release boundaries remain intact."
+  ],
+  "selected_artifacts": [
+    "context",
+    "research",
+    "design",
+    "plan",
+    "tasks",
+    "testing",
+    "docs"
+  ],
+  "dependencies": [],
+  "answers": {
+    "architecture_risk": "yes",
+    "public_contract": "no"
+  }
+}

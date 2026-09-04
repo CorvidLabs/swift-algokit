@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "id": "CHG-0003-install-all-four-agent-integrations-and-order-the-standalone-specsync-workflow-v",
+  "slug": "install-all-four-agent-integrations-and-order-the-standalone-specsync-workflow-v",
+  "title": "Install all four agent integrations and order the standalone SpecSync workflow verification after the Trust action",
+  "description": "Install all four agent integrations and order the standalone SpecSync workflow verification after the Trust action",
+  "kind": "migration",
+  "state": "archived",
+  "canonical_applied": true,
+  "base_commit": "ed08f33e5df68d3cc5065f4501bc7126e47d0a36",
+  "created_at": 1783986195,
+  "updated_at": 1788502659,
+  "affected_specs": [],
+  "affected_paths": [
+    ".claude/",
+    ".cursor/",
+    ".codex/",
+    ".gemini/",
+    ".github/workflows/trust.yml"
+  ],
+  "no_spec_change": true,
+  "no_spec_change_rationale": "This change configures repository governance integrations and CI execution order without changing the documented Swift AlgoKit product behavior or public API.",
+  "acceptance_criteria": [
+    "All four agent integrations report installed; the standalone SpecSync verification step runs after the Trust action; strict SpecSync validation at the committed 100% threshold passes; fledge trust doctor and fledge trust verify pass."
+  ],
+  "selected_artifacts": [
+    "context",
+    "research",
+    "design",
+    "plan",
+    "tasks",
+    "testing",
+    "docs"
+  ],
+  "dependencies": [],
+  "answers": {
+    "architecture_risk": "no",
+    "public_contract": "no"
+  }
+}

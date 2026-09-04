@@ -1,6 +1,6 @@
 ---
 id: CHG-0001-adopt-specsync-5-0-1-and-trust-1-0-0-governance-for-swift-algokit
-state: accepted
+state: archived
 type: migration
 base_commit: 39a7059eb1010bbfe9894871c58441bdd2f4a47b
 ---

@@ -1,6 +1,6 @@
 ---
 id: CHG-0003-install-all-four-agent-integrations-and-order-the-standalone-specsync-workflow-v
-state: accepted
+state: archived
 type: migration
 base_commit: ed08f33e5df68d3cc5065f4501bc7126e47d0a36
 ---
