@@ -1,6 +1,6 @@
 ---
 id: CHG-0002-document-the-existing-swift-algokit-api-at-complete-coverage-and-correct-rollout
-state: accepted
+state: archived
 type: documentation
 base_commit: 4d0bb405eabcb48c1f748500d4b8d0ea6a15a583
 ---
