@@ -32,7 +32,7 @@ jobs:
         with:
           range: ${{ steps.comparison.outputs.range }}
       - name: Enforce the verified SpecSync lifecycle
-        uses: CorvidLabs/spec-sync@3c2ed4972c8c53ae02ab5dd5775beccd6da3eeb8 # v6.0.0
+        uses: CorvidLabs/spec-sync@v6 # v6.0.0
         with:
           version: 6.0.0
           strict: true
