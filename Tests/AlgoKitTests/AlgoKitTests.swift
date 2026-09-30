@@ -6,7 +6,7 @@ final class AlgoKitTests: XCTestCase {
 
     // MARK: - MicroAlgos Convenience Tests
 
-    func test_microAlgos_algosConvertsCorrectly() {
+    func test_microAlgos_algosConvertsCorrectly() throws {
         let oneAlgo = MicroAlgos.algos(1.0)
         XCTAssertEqual(oneAlgo.value, 1_000_000)
 
@@ -17,7 +17,7 @@ final class AlgoKitTests: XCTestCase {
         XCTAssertEqual(tenAlgos.value, 10_000_000)
     }
 
-    func test_microAlgos_microAlgosPreservesValue() {
+    func test_microAlgos_microAlgosPreservesValue() throws {
         let micro = MicroAlgos.microAlgos(12345)
         XCTAssertEqual(micro.value, 12345)
 
@@ -28,7 +28,7 @@ final class AlgoKitTests: XCTestCase {
         XCTAssertEqual(large.value, 1_000_000_000)
     }
 
-    func test_microAlgos_algosProperty() {
+    func test_microAlgos_algosProperty() throws {
         let micro = MicroAlgos(1_500_000)
         XCTAssertEqual(micro.algos, 1.5)
 
@@ -36,36 +36,36 @@ final class AlgoKitTests: XCTestCase {
         XCTAssertEqual(oneMicro.algos, 0.000001)
     }
 
-    func test_microAlgos_fractionalAlgos() {
+    func test_microAlgos_fractionalAlgos() throws {
         let amount = MicroAlgos.algos(0.123456)
         XCTAssertEqual(amount.value, 123456)
     }
 
     // MARK: - Initialization Tests
 
-    func test_init_createsClientWithTestnet() {
-        let algokit = AlgoKit(network: .testnet)
+    func test_init_createsClientWithTestnet() throws {
+        let algokit = try AlgoKit(network: .testnet)
         XCTAssertNotNil(algokit)
     }
 
-    func test_init_createsClientWithMainnet() {
-        let algokit = AlgoKit(network: .mainnet)
+    func test_init_createsClientWithMainnet() throws {
+        let algokit = try AlgoKit(network: .mainnet)
         XCTAssertNotNil(algokit)
     }
 
-    func test_init_createsClientWithLocalnet() {
-        let algokit = AlgoKit(network: .localnet)
+    func test_init_createsClientWithLocalnet() throws {
+        let algokit = try AlgoKit(network: .localnet)
         XCTAssertNotNil(algokit)
     }
 
-    func test_init_createsClientWithConfiguration() async {
-        let algokit = AlgoKit(network: .testnet)
+    func test_init_createsClientWithConfiguration() async throws {
+        let algokit = try AlgoKit(network: .testnet)
         let config = await algokit.configuration
         XCTAssertNotNil(config.algodURL)
         XCTAssertNotNil(config.indexerURL)
     }
 
-    func test_init_customConfiguration() {
+    func test_init_customConfiguration() throws {
         let customURL = URL(string: "https://custom-node.example.com")!
         let indexerURL = URL(string: "https://custom-indexer.example.com")!
         let config = AlgorandConfiguration.custom(
@@ -77,14 +77,14 @@ final class AlgoKitTests: XCTestCase {
         XCTAssertNotNil(algokit)
     }
 
-    func test_init_hasAlgodClient() async {
-        let algokit = AlgoKit(network: .testnet)
+    func test_init_hasAlgodClient() async throws {
+        let algokit = try AlgoKit(network: .testnet)
         let client = await algokit.algodClient
         XCTAssertNotNil(client)
     }
 
-    func test_init_hasIndexerClient() async {
-        let algokit = AlgoKit(network: .testnet)
+    func test_init_hasIndexerClient() async throws {
+        let algokit = try AlgoKit(network: .testnet)
         let indexer = await algokit.indexerClient
         XCTAssertNotNil(indexer)
     }
@@ -92,7 +92,7 @@ final class AlgoKitTests: XCTestCase {
     // MARK: - Account Tests
 
     func test_generateAccount_createsValidAccount() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let account = try await algokit.generateAccount()
 
         XCTAssertEqual(account.publicKey.count, 32)
@@ -100,7 +100,7 @@ final class AlgoKitTests: XCTestCase {
     }
 
     func test_generateAccount_createsUniqueAccounts() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let account1 = try await algokit.generateAccount()
         let account2 = try await algokit.generateAccount()
 
@@ -109,7 +109,7 @@ final class AlgoKitTests: XCTestCase {
     }
 
     func test_account_recoversFromMnemonic() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let account1 = try await algokit.generateAccount()
         let account2 = try await algokit.account(from: account1.mnemonic())
 
@@ -118,15 +118,15 @@ final class AlgoKitTests: XCTestCase {
     }
 
     func test_account_mnemonicHas25Words() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let account = try await algokit.generateAccount()
 
         let words = try account.mnemonic().split(separator: " ")
         XCTAssertEqual(words.count, 25)
     }
 
-    func test_account_invalidMnemonicThrows() async {
-        let algokit = AlgoKit(network: .testnet)
+    func test_account_invalidMnemonicThrows() async throws {
+        let algokit = try AlgoKit(network: .testnet)
 
         do {
             _ = try await algokit.account(from: "invalid mnemonic words")
@@ -137,7 +137,7 @@ final class AlgoKitTests: XCTestCase {
     }
 
     func test_account_addressFormat() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let account = try await algokit.generateAccount()
 
         // Algorand addresses are 58 characters (base32 encoded)
@@ -146,25 +146,25 @@ final class AlgoKitTests: XCTestCase {
 
     // MARK: - Network Configuration Tests
 
-    func test_testnetConfiguration() {
-        let config = AlgorandConfiguration(network: .testnet)
+    func test_testnetConfiguration() throws {
+        let config = try AlgorandConfiguration(network: .testnet)
         XCTAssertTrue(config.algodURL.absoluteString.contains("testnet"))
     }
 
-    func test_mainnetConfiguration() {
-        let config = AlgorandConfiguration(network: .mainnet)
+    func test_mainnetConfiguration() throws {
+        let config = try AlgorandConfiguration(network: .mainnet)
         XCTAssertTrue(config.algodURL.absoluteString.contains("mainnet"))
     }
 
-    func test_localnetConfiguration() {
-        let config = AlgorandConfiguration(network: .localnet)
+    func test_localnetConfiguration() throws {
+        let config = try AlgorandConfiguration(network: .localnet)
         XCTAssertTrue(config.algodURL.absoluteString.contains("localhost"))
     }
 
     // MARK: - AtomicTransactionComposer Tests
 
-    func test_atomic_createsComposer() async {
-        let algokit = AlgoKit(network: .testnet)
+    func test_atomic_createsComposer() async throws {
+        let algokit = try AlgoKit(network: .testnet)
         let composer = await algokit.atomic()
         XCTAssertNotNil(composer)
     }
@@ -172,7 +172,7 @@ final class AlgoKitTests: XCTestCase {
     // MARK: - Transaction Signing Tests
 
     func test_signedTransaction_signsPayment() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let sender = try await algokit.generateAccount()
         let receiver = try await algokit.generateAccount()
 
@@ -193,7 +193,7 @@ final class AlgoKitTests: XCTestCase {
     }
 
     func test_signedTransaction_differentSignersProduceDifferentSignatures() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let sender1 = try await algokit.generateAccount()
         let sender2 = try await algokit.generateAccount()
         let receiver = try await algokit.generateAccount()
@@ -227,7 +227,7 @@ final class AlgoKitTests: XCTestCase {
     // MARK: - Atomic Transaction Group Tests
 
     func test_atomicGroup_createsValidGroup() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let alice = try await algokit.generateAccount()
         let bob = try await algokit.generateAccount()
 
@@ -257,7 +257,7 @@ final class AlgoKitTests: XCTestCase {
     }
 
     func test_atomicGroup_requiresMultipleTransactions() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let alice = try await algokit.generateAccount()
         let bob = try await algokit.generateAccount()
 
@@ -277,7 +277,7 @@ final class AlgoKitTests: XCTestCase {
     }
 
     func test_signedAtomicGroup_signsCorrectly() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let alice = try await algokit.generateAccount()
         let bob = try await algokit.generateAccount()
 
@@ -310,7 +310,7 @@ final class AlgoKitTests: XCTestCase {
     // MARK: - Asset Transaction Tests
 
     func test_assetCreateTransaction_buildsCorrectly() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let creator = try await algokit.generateAccount()
 
         let assetParams = AssetParams(
@@ -337,7 +337,7 @@ final class AlgoKitTests: XCTestCase {
     }
 
     func test_assetOptInTransaction_buildsCorrectly() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let account = try await algokit.generateAccount()
 
         let tx = AssetOptInTransaction(
@@ -354,7 +354,7 @@ final class AlgoKitTests: XCTestCase {
     }
 
     func test_assetTransferTransaction_buildsCorrectly() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let sender = try await algokit.generateAccount()
         let receiver = try await algokit.generateAccount()
 
@@ -378,7 +378,7 @@ final class AlgoKitTests: XCTestCase {
     // MARK: - Application Transaction Tests
 
     func test_applicationCallTransaction_buildsCorrectly() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let caller = try await algokit.generateAccount()
 
         let tx = ApplicationCallTransaction.call(
@@ -396,7 +396,7 @@ final class AlgoKitTests: XCTestCase {
     }
 
     func test_applicationOptInTransaction_buildsCorrectly() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let account = try await algokit.generateAccount()
 
         let tx = ApplicationCallTransaction.optIn(
@@ -415,7 +415,7 @@ final class AlgoKitTests: XCTestCase {
     // MARK: - Key Registration Transaction Tests
 
     func test_keyRegistrationOnline_buildsCorrectly() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let account = try await algokit.generateAccount()
 
         let voteKey = Data(repeating: 1, count: 32)
@@ -440,7 +440,7 @@ final class AlgoKitTests: XCTestCase {
     }
 
     func test_keyRegistrationOffline_buildsCorrectly() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let account = try await algokit.generateAccount()
 
         let tx = KeyRegistrationTransaction.offline(
@@ -459,7 +459,7 @@ final class AlgoKitTests: XCTestCase {
     // MARK: - Address Tests
 
     func test_address_validFormat() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let account = try await algokit.generateAccount()
 
         // Address should be valid base32
@@ -471,7 +471,7 @@ final class AlgoKitTests: XCTestCase {
         XCTAssertEqual(account.address, recreated)
     }
 
-    func test_address_invalidThrows() {
+    func test_address_invalidThrows() throws {
         do {
             _ = try Address(string: "invalid-address")
             XCTFail("Expected error for invalid address")
@@ -483,7 +483,7 @@ final class AlgoKitTests: XCTestCase {
     // MARK: - Payment Transaction Tests
 
     func test_paymentTransaction_withNote() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let sender = try await algokit.generateAccount()
         let receiver = try await algokit.generateAccount()
 
@@ -504,7 +504,7 @@ final class AlgoKitTests: XCTestCase {
     }
 
     func test_paymentTransaction_withCloseRemainder() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let sender = try await algokit.generateAccount()
         let receiver = try await algokit.generateAccount()
         let closeRemainder = try await algokit.generateAccount()
@@ -525,13 +525,13 @@ final class AlgoKitTests: XCTestCase {
 
     // MARK: - Edge Cases
 
-    func test_microAlgos_zero() {
+    func test_microAlgos_zero() throws {
         let zero = MicroAlgos.algos(0)
         XCTAssertEqual(zero.value, 0)
         XCTAssertEqual(zero.algos, 0)
     }
 
-    func test_microAlgos_largeAmount() {
+    func test_microAlgos_largeAmount() throws {
         // Max supply is ~10 billion ALGO
         let large = MicroAlgos.algos(10_000_000_000)
         XCTAssertEqual(large.value, 10_000_000_000_000_000)

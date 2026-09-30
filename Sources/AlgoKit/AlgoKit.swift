@@ -185,16 +185,18 @@ public actor AlgoKit {
     /**
      Creates a new AlgoKit client for the specified network.
      - Parameter network: The network to connect to
+     - Throws: When the network's configuration cannot be built. swift-algorand 0.4
+       made the configuration factories throwing.
      */
-    public init(network: AlgorandConfiguration.Network) {
+    public init(network: AlgorandConfiguration.Network) throws {
         let configuration: AlgorandConfiguration
         switch network {
         case .localnet:
-            configuration = .localnet()
+            configuration = try .localnet()
         case .testnet:
-            configuration = .testnet()
+            configuration = try .testnet()
         case .mainnet:
-            configuration = .mainnet()
+            configuration = try .mainnet()
         case .custom(let algodURL, let indexerURL):
             configuration = .custom(algodURL: algodURL, indexerURL: indexerURL)
         }

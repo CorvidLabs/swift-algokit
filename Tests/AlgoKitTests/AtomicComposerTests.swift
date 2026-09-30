@@ -8,14 +8,14 @@ final class AtomicComposerTests: XCTestCase {
     private let genesisHash = Data(repeating: 0, count: 32)
 
     private func makeAccount() async throws -> Account {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         return try await algokit.generateAccount()
     }
 
     // MARK: - AtomicTransactionComposer Builder
 
     func test_composer_addCustomTransaction() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let alice = try await makeAccount()
         let bob = try await makeAccount()
 
@@ -35,7 +35,7 @@ final class AtomicComposerTests: XCTestCase {
     }
 
     func test_composer_addMultipleCustomTransactions() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let alice = try await makeAccount()
         let bob = try await makeAccount()
 
@@ -66,7 +66,7 @@ final class AtomicComposerTests: XCTestCase {
     }
 
     func test_composer_buildWithCustomTransactions() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let alice = try await makeAccount()
         let bob = try await makeAccount()
 
@@ -98,7 +98,7 @@ final class AtomicComposerTests: XCTestCase {
     }
 
     func test_composer_buildSingleTransaction() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let alice = try await makeAccount()
         let bob = try await makeAccount()
 
@@ -119,7 +119,7 @@ final class AtomicComposerTests: XCTestCase {
     }
 
     func test_composer_addMixedTransactionTypes() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let alice = try await makeAccount()
         let bob = try await makeAccount()
 
@@ -152,7 +152,7 @@ final class AtomicComposerTests: XCTestCase {
     // MARK: - AtomicTransactionResult Signing
 
     func test_result_signedByArray() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let alice = try await makeAccount()
         let bob = try await makeAccount()
 
@@ -186,7 +186,7 @@ final class AtomicComposerTests: XCTestCase {
     }
 
     func test_result_signedByDictionary() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let alice = try await makeAccount()
         let bob = try await makeAccount()
 
@@ -220,7 +220,7 @@ final class AtomicComposerTests: XCTestCase {
     }
 
     func test_result_signedByArrayMismatchThrows() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let alice = try await makeAccount()
         let bob = try await makeAccount()
 
@@ -367,7 +367,7 @@ final class AtomicComposerTests: XCTestCase {
     // MARK: - Transaction Group Validation
 
     func test_submitGroup_mismatchThrows() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let alice = try await makeAccount()
         let bob = try await makeAccount()
 

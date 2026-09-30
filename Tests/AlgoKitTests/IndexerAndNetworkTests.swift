@@ -72,7 +72,7 @@ final class IndexerAndNetworkTests: XCTestCase {
 
     // MARK: - Network Configuration Tests
 
-    func test_customConfig_withoutIndexer() async {
+    func test_customConfig_withoutIndexer() async throws {
         let config = AlgorandConfiguration.custom(
             algodURL: URL(string: "https://node.example.com")!,
             indexerURL: nil,
@@ -84,7 +84,7 @@ final class IndexerAndNetworkTests: XCTestCase {
         XCTAssertNil(indexer)
     }
 
-    func test_customConfig_withIndexer() async {
+    func test_customConfig_withIndexer() async throws {
         let config = AlgorandConfiguration.custom(
             algodURL: URL(string: "https://node.example.com")!,
             indexerURL: URL(string: "https://indexer.example.com")!,
@@ -96,27 +96,27 @@ final class IndexerAndNetworkTests: XCTestCase {
         XCTAssertNotNil(indexer)
     }
 
-    func test_testnet_hasIndexer() async {
-        let algokit = AlgoKit(network: .testnet)
+    func test_testnet_hasIndexer() async throws {
+        let algokit = try AlgoKit(network: .testnet)
         let indexer = await algokit.indexerClient
         XCTAssertNotNil(indexer)
     }
 
-    func test_mainnet_hasIndexer() async {
-        let algokit = AlgoKit(network: .mainnet)
+    func test_mainnet_hasIndexer() async throws {
+        let algokit = try AlgoKit(network: .mainnet)
         let indexer = await algokit.indexerClient
         XCTAssertNotNil(indexer)
     }
 
-    func test_localnet_hasIndexer() async {
-        let algokit = AlgoKit(network: .localnet)
+    func test_localnet_hasIndexer() async throws {
+        let algokit = try AlgoKit(network: .localnet)
         let indexer = await algokit.indexerClient
         XCTAssertNotNil(indexer)
     }
 
     // MARK: - Configuration URL Tests
 
-    func test_customConfig_preservesURL() async {
+    func test_customConfig_preservesURL() async throws {
         let url = URL(string: "https://my-custom-node.example.com")!
         let config = AlgorandConfiguration.custom(
             algodURL: url,
@@ -129,17 +129,17 @@ final class IndexerAndNetworkTests: XCTestCase {
         XCTAssertEqual(storedConfig.algodURL, url)
     }
 
-    func test_customNetworkInit_works() {
+    func test_customNetworkInit_works() throws {
         let algodURL = URL(string: "https://custom-algod.example.com")!
         let indexerURL = URL(string: "https://custom-indexer.example.com")!
-        let algokit = AlgoKit(network: .custom(algodURL: algodURL, indexerURL: indexerURL))
+        let algokit = try AlgoKit(network: .custom(algodURL: algodURL, indexerURL: indexerURL))
         XCTAssertNotNil(algokit)
     }
 
     // MARK: - Key Registration Transaction Tests (Extended)
 
     func test_keyRegistration_onlineWithStateProofKey() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let account = try await algokit.generateAccount()
 
         let voteKey = Data(repeating: 1, count: 32)
@@ -167,7 +167,7 @@ final class IndexerAndNetworkTests: XCTestCase {
     }
 
     func test_keyRegistration_onlineCanBeSigned() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let account = try await algokit.generateAccount()
 
         let tx = KeyRegistrationTransaction.online(
@@ -188,7 +188,7 @@ final class IndexerAndNetworkTests: XCTestCase {
     }
 
     func test_keyRegistration_offlineCanBeSigned() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let account = try await algokit.generateAccount()
 
         let tx = KeyRegistrationTransaction.offline(
@@ -206,7 +206,7 @@ final class IndexerAndNetworkTests: XCTestCase {
     // MARK: - Payment Transaction Tests (Extended)
 
     func test_paymentTransaction_selfTransfer() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let account = try await algokit.generateAccount()
 
         let tx = PaymentTransaction(
@@ -224,7 +224,7 @@ final class IndexerAndNetworkTests: XCTestCase {
     }
 
     func test_paymentTransaction_withEmptyNote() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let sender = try await algokit.generateAccount()
         let receiver = try await algokit.generateAccount()
 
@@ -243,7 +243,7 @@ final class IndexerAndNetworkTests: XCTestCase {
     }
 
     func test_paymentTransaction_withLargeNote() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let sender = try await algokit.generateAccount()
         let receiver = try await algokit.generateAccount()
         let noteData = Data(repeating: 0x42, count: 1000)
@@ -264,7 +264,7 @@ final class IndexerAndNetworkTests: XCTestCase {
 
     // MARK: - MicroAlgos Extended Tests
 
-    func test_microAlgos_precisionBoundary() {
+    func test_microAlgos_precisionBoundary() throws {
         // Smallest non-zero amount
         let oneMicro = MicroAlgos.microAlgos(1)
         XCTAssertEqual(oneMicro.algos, 0.000001)
@@ -274,7 +274,7 @@ final class IndexerAndNetworkTests: XCTestCase {
         XCTAssertEqual(fromAlgos.value, 1)
     }
 
-    func test_microAlgos_multipleConversions() {
+    func test_microAlgos_multipleConversions() throws {
         let amounts: [(Double, UInt64)] = [
             (0.1, 100_000),
             (0.01, 10_000),
@@ -293,7 +293,7 @@ final class IndexerAndNetworkTests: XCTestCase {
     // MARK: - Account Tests (Extended)
 
     func test_account_multipleRecoveriesAreConsistent() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         let original = try await algokit.generateAccount()
         let mnemonic = try original.mnemonic()
 
@@ -305,7 +305,7 @@ final class IndexerAndNetworkTests: XCTestCase {
     }
 
     func test_account_differentAccountsHaveDifferentKeys() async throws {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
 
         var accounts: [Account] = []
         for _ in 0..<5 {

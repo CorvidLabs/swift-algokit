@@ -21,7 +21,7 @@ final class LocalnetTests: XCTestCase {
         )
 
         // Use the static factory method which includes the default API token
-        algokit = AlgoKit(configuration: .localnet())
+        algokit = AlgoKit(configuration: try .localnet())
     }
 
     /// Funds an account using goal CLI via Docker
