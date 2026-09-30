@@ -6,10 +6,11 @@
   "title": "Support swift-algorand 0.4: AlgoKit(network:) throws, because the configuration factories it calls now throw",
   "description": "Support swift-algorand 0.4: AlgoKit(network:) throws, because the configuration factories it calls now throw",
   "kind": "bug_fix",
-  "state": "approved",
+  "state": "verifying",
+  "canonical_applied": true,
   "base_commit": "3b4574c9b8e83f879d4d0b6674e0f0dd29056564",
   "created_at": 1790808588,
-  "updated_at": 1790809523,
+  "updated_at": 1790809545,
   "affected_specs": [
     "algokit"
   ],
