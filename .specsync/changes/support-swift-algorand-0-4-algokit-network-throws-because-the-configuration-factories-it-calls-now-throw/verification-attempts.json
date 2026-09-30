@@ -17,6 +17,23 @@
       "requirement_ids": [
         "REQ-algokit-001"
       ]
+    },
+    {
+      "timestamp": 1790809564,
+      "commit": "88bf20d0b9aae4599bd9ba0e82f2886f2a40f070",
+      "contract_digest": "ef63ea70134240bd8be8336beeba881b4fc5c1eac460fb8a37c385c7c38442e9",
+      "workspace_digest": "6d791e55619d0e3c56ab8e5f32989ca9a8b19bb4248757239c12200633fa689a",
+      "passed": true,
+      "commands": [
+        {
+          "command": "specsync check --spec algokit",
+          "success": true,
+          "exit_code": 0
+        }
+      ],
+      "requirement_ids": [
+        "REQ-algokit-001"
+      ]
     }
   ]
 }
