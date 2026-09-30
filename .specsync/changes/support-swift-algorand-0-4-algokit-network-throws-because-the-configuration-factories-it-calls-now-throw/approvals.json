@@ -19,6 +19,13 @@
       "approved_delta_digests": {
         "algokit": "f3325f0203ad67b940f23c0cbd5bf5e3da2f0efc506f7216d81d864dd8587936"
       }
+    },
+    {
+      "gate": "acceptance",
+      "actor": "0xLeif",
+      "timestamp": 1790810899,
+      "digest": "3c33bfe7990ef9b6c281ced5785a3a8800d0fd9ab29e3e56eb7198e6d28dfbb6",
+      "note": "Accepted by Leif in chat with orc, 2026-09-30, after verification at bf1e89a; recorded by orc"
     }
   ],
   "reopenings": []

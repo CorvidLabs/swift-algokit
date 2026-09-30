@@ -1,6 +1,6 @@
 ---
 id: support-swift-algorand-0-4-algokit-network-throws-because-the-configuration-factories-it-calls-now-throw
-state: implementing
+state: accepted
 type: bug_fix
 base_commit: 3b4574c9b8e83f879d4d0b6674e0f0dd29056564
 ---
