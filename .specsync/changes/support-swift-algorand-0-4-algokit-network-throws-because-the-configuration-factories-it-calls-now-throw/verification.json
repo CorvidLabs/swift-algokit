@@ -1,0 +1,173 @@
+{
+  "timestamp": 1790810891,
+  "commit": "bf1e89a0ae9c58cbf115418ff7fcf6e5050ff0a5",
+  "contract_digest": "ef63ea70134240bd8be8336beeba881b4fc5c1eac460fb8a37c385c7c38442e9",
+  "workspace_digest": "6d791e55619d0e3c56ab8e5f32989ca9a8b19bb4248757239c12200633fa689a",
+  "acceptance_input_digest": "5ce79b8875b5daed1df862931af7c25127f04476bf91ea1d19348de6c3c998d1",
+  "acceptance_manifest": {
+    "schema_version": 1,
+    "entries": [
+      {
+        "path": "Package.resolved",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "9122d825cfca08736e12f0120e16f1a22f53ed3b659b7930f8b68749c1ad43c0",
+        "entry_digest": "54c3e446d10c8e16d66bac057af8a39f099e82a8c2dd4cb37c5ded55bee743b8",
+        "owners": [
+          "@exact:delivery"
+        ]
+      },
+      {
+        "path": "README.md",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "b1348f0deb4e1b218c9ef8f14d9538d76af6f82b5cfc55368341528eddf410cd",
+        "entry_digest": "b29a087eccf17de9592efc98f0cf2faf53c73889d53f27fcef98061cef005047",
+        "owners": [
+          "@exact:delivery"
+        ]
+      },
+      {
+        "path": "Sources/AlgoKit/AlgoKit.swift",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "4c3f6ed2a0607b31d241e56808b238de15f7c66e9d0836454152111c3f0f3bee",
+        "entry_digest": "74853db7d550dddbc0dee8bbfc877de76ef5385bf1d34ac75eed639e50cb1a96",
+        "owners": [
+          "algokit"
+        ]
+      },
+      {
+        "path": "Tests/AlgoKitTests",
+        "kind": "non_file",
+        "mode": 0,
+        "payload_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "entry_digest": "dad6d683168f978790c46fad3d7d6c9cd2608211f0b5feaa73cf20ec93e25bc4",
+        "owners": [
+          "@exact:test"
+        ]
+      },
+      {
+        "path": "Tests/AlgoKitTests/AlgoKitTests.swift",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "b18997957f3995c24714a15a318766cd51378a4a697a10238275e9832de4c767",
+        "entry_digest": "981b1e918ab7690b5e8536d40e56344e8113ca49961b3de03d425ddb507527c7",
+        "owners": [
+          "@exact:test"
+        ]
+      },
+      {
+        "path": "Tests/AlgoKitTests/ApplicationTransactionTests.swift",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "a6bd59b27440c62a409049ef66dda7a83267e020b7036a1b2b923203a8d28f54",
+        "entry_digest": "0250978cab25ce7afd7788defb110ea38b7a2c867ccbbfc85d21c7119971e190",
+        "owners": [
+          "@exact:test"
+        ]
+      },
+      {
+        "path": "Tests/AlgoKitTests/AssetTransactionTests.swift",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "e5efa2109002e7037bda2d02450f4339646d41225ddee84e5c7f4ede940b9918",
+        "entry_digest": "f117a987344e250e9d5edcc9b5355d11720c68cef51a29bd9c14cb961697442f",
+        "owners": [
+          "@exact:test"
+        ]
+      },
+      {
+        "path": "Tests/AlgoKitTests/AtomicComposerTests.swift",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "7c34010e691805c982ebdb9b288f612aed3ff7549cd04f0ac9a380b79f6e4a0d",
+        "entry_digest": "56d037d257e470b9470165e3c71d869e14bb1a84840a864e7ee54c1e237d97b6",
+        "owners": [
+          "@exact:test"
+        ]
+      },
+      {
+        "path": "Tests/AlgoKitTests/IndexerAndNetworkTests.swift",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "4d51da534881c2876affbb88dcf5684a4a2d62a4a5e73de1fcdea26f5d1474b1",
+        "entry_digest": "eeba45cfcf8c4057555c6c8743a871181be2d5e1e299139743b19f4a98d72cb8",
+        "owners": [
+          "@exact:test"
+        ]
+      },
+      {
+        "path": "Tests/AlgoKitTests/LocalnetTests.swift",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "5ac41624c736251330276cc23c2772bf8bba5c59671a0bfe053beb175ba76a1e",
+        "entry_digest": "a726a4d656b37e5ab05c53f90235bef72bcef5783d1093657963891e7654a3df",
+        "owners": [
+          "@exact:test"
+        ]
+      },
+      {
+        "path": "specs/algokit/algokit.spec.md",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "b7f3587760282f743d7819ef5a8bd9920e50e2f218e133d01c93438d4ec2b669",
+        "entry_digest": "a5d8359d03cecef0c85414aa02efe1075106b3c2957f4e1849de3dd2348c3f2b",
+        "owners": [
+          "algokit"
+        ]
+      },
+      {
+        "path": "specs/algokit/context.md",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "02d5fde7252d34eb3e71c26e84709c9a85aa4b0bb203b514fa6033094e41164e",
+        "entry_digest": "096462fc19bfbc12e26bcd842ce1b740f281dcdbf8a16816096177eb749b36bd",
+        "owners": [
+          "algokit"
+        ]
+      },
+      {
+        "path": "specs/algokit/requirements.md",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "3f134d9e8e23014c64f7be33c1a9365c4a54d3b8aa24edf3256bcbfbaf32c854",
+        "entry_digest": "64e7f60d124ec66037b119058bb5828b000c3ee3a82497cc73e0a863741a610e",
+        "owners": [
+          "algokit"
+        ]
+      },
+      {
+        "path": "specs/algokit/tasks.md",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "82207aac74b7dea20aaced956cebb1118ea7522034b4af4ca9515942a8fd8dac",
+        "entry_digest": "b8609959a02423fe6cea0a32109a73df17a705fefd854da67efcf36c7145114f",
+        "owners": [
+          "algokit"
+        ]
+      },
+      {
+        "path": "specs/algokit/testing.md",
+        "kind": "file",
+        "mode": 33188,
+        "payload_digest": "59c5f84c0de59b4d39023a07e26234e6a28867fec90aa8f17abcea989a65a311",
+        "entry_digest": "d0cb7ba51206e1b71da9b96d0d003c0ed24c85c47639946729be7a342b5280b1",
+        "owners": [
+          "algokit"
+        ]
+      }
+    ]
+  },
+  "passed": true,
+  "commands": [
+    {
+      "command": "specsync check --spec algokit",
+      "success": true,
+      "exit_code": 0
+    }
+  ],
+  "requirement_ids": [
+    "REQ-algokit-001"
+  ]
+}

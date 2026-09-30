@@ -1,6 +1,6 @@
 ---
 module: algokit
-version: 3
+version: 4
 status: stable
 files:
   - Sources/AlgoKit/AlgoKit+Account.swift
@@ -39,7 +39,7 @@ account, network, and indexer queries. It does not own keys, run a node, or hide
 | `AtomicTransactionComposer` | Actor that accumulates unsigned transactions for one atomic group. |
 | `AtomicTransactionResult` | Sendable built group awaiting signer assignment. |
 | `SignedAtomicTransactionResult` | Sendable signed group awaiting submission. |
-| `init` | Constructs `AlgoKit`, composer, and result values from their documented dependencies. |
+| `init` | Constructs `AlgoKit`, composer, and result values from their documented dependencies. `AlgoKit(network:)` throws when the network's configuration factory throws (swift-algorand 0.4). |
 
 ### Exported Account, Network, and Query Operations
 
@@ -121,7 +121,7 @@ account, network, and indexer queries. It does not own keys, run a node, or hide
 
 ## Behavioral Examples
 
-- `AlgoKit(network: .testnet)` exposes both algod and indexer clients from the testnet configuration.
+- `try AlgoKit(network: .testnet)` exposes both algod and indexer clients from the testnet configuration.
 - `sendAndWait(from:to:amount:)` submits a signed payment and returns its confirmed pending-transaction record.
 - `atomic().pay(...).transferAsset(...).build().signedBy([alice, bob])` constructs and signs one ordered group.
 - `searchAssets()` on a custom algod-only configuration throws an indexer-not-configured network error.
@@ -131,6 +131,7 @@ account, network, and indexer queries. It does not own keys, run a node, or hide
 | Condition | Behavior |
 |-----------|----------|
 | Invalid mnemonic | Account recovery propagates the Algorand mnemonic error. |
+| Network configuration failure | `AlgoKit(network:)` propagates the swift-algorand configuration error. |
 | Algod or indexer request failure | The asynchronous operation propagates the client error. |
 | Missing indexer client | Indexer operations throw `AlgorandError.networkError`. |
 | Missing created application or asset index | Creation throws `AlgorandError.networkError` after confirmation. |
@@ -149,3 +150,4 @@ account, network, and indexer queries. It does not own keys, run a node, or hide
 |------|--------|--------|
 | 2026-07-13 | 0xLeif | Documented the existing API and behavior at complete source and export coverage. |
 | 2026-07-13 | CHG-0002-document-the-existing-swift-algokit-api-at-complete-coverage-and-correct-rollout: Document the existing Swift AlgoKit API at complete coverage and correct rollout policy gaps |
+| 2026-09-30 | support-swift-algorand-0-4-algokit-network-throws-because-the-configuration-factories-it-calls-now-throw: `AlgoKit(network:)` throws, so AlgoKit builds against swift-algorand 0.4 as well as 0.3 |

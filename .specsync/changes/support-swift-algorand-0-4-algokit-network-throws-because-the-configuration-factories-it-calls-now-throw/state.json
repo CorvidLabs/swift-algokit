@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "workflow_origin_version": 1,
+  "id": "support-swift-algorand-0-4-algokit-network-throws-because-the-configuration-factories-it-calls-now-throw",
+  "slug": "support-swift-algorand-0-4-algokit-network-throws-because-the-configuration-factories-it-calls-now-throw",
+  "title": "Support swift-algorand 0.4: AlgoKit(network:) throws, because the configuration factories it calls now throw",
+  "description": "Support swift-algorand 0.4: AlgoKit(network:) throws, because the configuration factories it calls now throw",
+  "kind": "bug_fix",
+  "state": "accepted",
+  "canonical_applied": true,
+  "base_commit": "3b4574c9b8e83f879d4d0b6674e0f0dd29056564",
+  "created_at": 1790808588,
+  "updated_at": 1790810899,
+  "affected_specs": [
+    "algokit"
+  ],
+  "affected_paths": [
+    "Sources/AlgoKit/AlgoKit.swift",
+    "Package.resolved",
+    "README.md",
+    "Tests/AlgoKitTests",
+    "specs/algokit/algokit.spec.md",
+    "specs/algokit/requirements.md",
+    "specs/algokit/tasks.md"
+  ],
+  "no_spec_change": false,
+  "no_spec_change_rationale": null,
+  "acceptance_criteria": [
+    "AlgoKit builds and its tests pass against swift-algorand 0.4.0 and against 0.3.x; AlgoKit(network:) is throwing and propagates the configuration factory's error; AlgoKit(configuration:) is unchanged; the README examples use try."
+  ],
+  "selected_artifacts": [
+    "context",
+    "testing",
+    "tasks",
+    "design",
+    "requirements",
+    "docs"
+  ],
+  "dependencies": [],
+  "answers": {
+    "architecture_risk": "no",
+    "public_contract": "yes"
+  }
+}

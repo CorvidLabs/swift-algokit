@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/CorvidLabs/swift-algorand.git",
       "state" : {
-        "revision" : "77375c5c741fe907cfdcf17ca893a8c5b2bf8a79",
-        "version" : "0.2.0"
+        "revision" : "4e63b9e0833d9ce3ceb2ca8f6233f7a108d8441b",
+        "version" : "0.4.0"
       }
     },
     {

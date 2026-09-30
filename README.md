@@ -57,7 +57,7 @@ Or add it via Xcode:
 import AlgoKit
 
 // Connect to a network
-let algokit = AlgoKit(network: .testnet)
+let algokit = try AlgoKit(network: .testnet)
 
 // Generate or recover an account
 let account = try algokit.generateAccount()
@@ -83,9 +83,9 @@ print("Confirmed in round \(result.confirmedRound!)")
 
 ```swift
 // Predefined networks
-let testnet = AlgoKit(network: .testnet)
-let mainnet = AlgoKit(network: .mainnet)
-let localnet = AlgoKit(network: .localnet)
+let testnet = try AlgoKit(network: .testnet)
+let mainnet = try AlgoKit(network: .mainnet)
+let localnet = try AlgoKit(network: .localnet)
 
 // Custom endpoint
 let custom = AlgoKit(configuration: .custom(

@@ -8,7 +8,7 @@ final class ApplicationTransactionTests: XCTestCase {
     private let genesisHash = Data(repeating: 0, count: 32)
 
     private func makeAccount() async throws -> Account {
-        let algokit = AlgoKit(network: .testnet)
+        let algokit = try AlgoKit(network: .testnet)
         return try await algokit.generateAccount()
     }
 
