@@ -9,6 +9,16 @@
       "approved_delta_digests": {
         "algokit": "f3325f0203ad67b940f23c0cbd5bf5e3da2f0efc506f7216d81d864dd8587936"
       }
+    },
+    {
+      "gate": "definition",
+      "actor": "0xLeif",
+      "timestamp": 1790809523,
+      "digest": "ef63ea70134240bd8be8336beeba881b4fc5c1eac460fb8a37c385c7c38442e9",
+      "note": null,
+      "approved_delta_digests": {
+        "algokit": "f3325f0203ad67b940f23c0cbd5bf5e3da2f0efc506f7216d81d864dd8587936"
+      }
     }
   ],
   "reopenings": []

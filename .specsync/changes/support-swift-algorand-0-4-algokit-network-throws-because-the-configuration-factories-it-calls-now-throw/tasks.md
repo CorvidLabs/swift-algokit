@@ -9,5 +9,6 @@ artifact: tasks
 - [x] Tests and README use `try`
 - [x] Package.resolved on swift-algorand 0.4.0
 - [x] Spec text, delta, change log
-- [ ] Definition approval (Leif), `specsync change check`, review, finalize
-- [ ] Release 0.1.0 after merge (Leif's go)
+- [x] Definition approval (0xLeif, 2026-09-30)
+
+Follow-up after merge, on Leif's go: tag release 0.1.0. The init change is source-breaking for callers of `AlgoKit(network:)`.
